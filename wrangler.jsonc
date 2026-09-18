@@ -1,0 +1,8 @@
+// Настройки Cloudflare: сайт статический, Worker просто раздаёт файлы из корня.
+{
+  "name": "kyrgyz-tili",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "."
+  }
+}
