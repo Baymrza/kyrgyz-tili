@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кыргыз тили күнү</title>
+<meta name="description" content="Кыргыз тилинин тарыхы, тилди өнүктүргөн инсандар, кызыктуу фактылар, викторина жана мини-оюн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ================= ОРНАМЕНТ-СПРАЙТ ================= -->
+<svg class="sprite" aria-hidden="true">
+  <symbol id="horn" viewBox="-40 -40 80 80">
+    <path d="M0 -3 C -14 -3 -23 -11 -23 -19 C -23 -28 -14 -33 -7 -29 C -1 -25 -2 -17 -8 -16 C -13 -15 -15 -20 -11 -22"/>
+  </symbol>
+
+  <symbol id="orn-div" viewBox="0 0 300 60">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="translate(150 30)">
+        <use href="#horn"/>
+        <use href="#horn" transform="scale(-1 1)"/>
+        <use href="#horn" transform="scale(1 -1)"/>
+        <use href="#horn" transform="scale(-1 -1)"/>
+        <path d="M0 -6 L6 0 L0 6 L-6 0 Z"/>
+      </g>
+      <path d="M20 30 H105 M195 30 H280"/>
+      <circle cx="113" cy="30" r="2.5"/><circle cx="187" cy="30" r="2.5"/>
+    </g>
+  </symbol>
+
+  <symbol id="orn-big" viewBox="0 0 300 300">
+    <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+      <g transform="translate(150 150)">
+        <g transform="translate(0 -40)">
+          <use href="#horn"/><use href="#horn" transform="scale(-1 1)"/>
+        </g>
+        <g transform="translate(0 40) scale(1 -1)">
+          <use href="#horn"/><use href="#horn" transform="scale(-1 1)"/>
+        </g>
+        <g transform="rotate(90) translate(0 -40)">
+          <use href="#horn"/><use href="#horn" transform="scale(-1 1)"/>
+        </g>
+        <g transform="rotate(90) translate(0 40) scale(1 -1)">
+          <use href="#horn"/><use href="#horn" transform="scale(-1 1)"/>
+        </g>
+        <path d="M0 -22 L22 0 L0 22 L-22 0 Z"/>
+        <circle r="8"/>
+      </g>
+    </g>
+  </symbol>
+</svg>
+
+<div class="scroll-progress"><i></i></div>
+
+<!-- ================= НАВИГАЦИЯ ================= -->
+<header class="nav nav--dark" id="nav">
+  <a href="#hero" class="nav__logo">
+    <svg class="nav__mark" viewBox="0 0 300 300"><use href="#orn-big"/></svg>
+    <span>КЫРГЫЗ ТИЛИ</span>
+  </a>
+  <nav class="nav__links">
+    <a href="#about"   data-ru="О празднике" data-en="The day">Майрам</a>
+    <a href="#history" data-ru="История"     data-en="History">Тарых</a>
+    <a href="#people"  data-ru="Личности"    data-en="People">Инсандар</a>
+    <a href="#facts"   data-ru="Факты"       data-en="Facts">Фактылар</a>
+    <a href="#words"   data-ru="Слова"       data-en="Words">Сөз казына</a>
+    <a href="#quiz"    data-ru="Викторина"   data-en="Quiz">Викторина</a>
+    <a href="#game"    data-ru="Мини-игра"   data-en="Game">Оюн</a>
+  </nav>
+  <div class="lang" role="group" aria-label="Тил / Язык / Language">
+    <button type="button" class="lang__b is-on" data-lang="kg">KG</button>
+    <button type="button" class="lang__b" data-lang="ru">RU</button>
+    <button type="button" class="lang__b" data-lang="en">EN</button>
+  </div>
+  <button class="burger" id="burger" type="button" aria-label="Меню"><i></i><i></i><i></i></button>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+  <div class="hero__bg" style="background-image:url('assets/img/hero.jpg')"></div>
+  <div class="hero__veil"></div>
+  <div class="hero__grid"></div>
+
+  <div class="hero__top">
+    <span>23 / 09</span>
+    <span data-ru="Государственный язык Кыргызской Республики" data-en="The state language of the Kyrgyz Republic">Кыргыз Республикасынын мамлекеттик тили</span>
+  </div>
+
+  <div class="hero__inner">
+    <p class="hero__kicker">
+      <span data-ru="ДУША" data-en="THE SOUL">ЭЛДИН</span><span data-ru="И" data-en="AND">ЖАНЫ</span><span data-ru="СЕРДЦЕ" data-en="HEART">ЖАНА</span><span data-ru="НАРОДА" data-en="OF A NATION">ЖҮРӨГҮ</span>
+    </p>
+    <h1 class="hero__title">
+      <span class="l1">КЫРГЫЗ</span>
+      <span class="l2">ТИЛИ</span>
+    </h1>
+    <p class="hero__kicker hero__kicker--b">
+      <span data-ru="ДЕНЬ" data-en="STATE">МАМЛЕКЕТТИК</span><span data-ru="ГОСУДАРСТВЕННОГО" data-en="LANGUAGE">ТИЛ</span><span data-ru="ЯЗЫКА" data-en="DAY">КҮНҮ</span><span>1989</span>
+    </p>
+
+    <svg class="orn hero__orn" viewBox="0 0 300 300"><use href="#orn-big"/></svg>
+
+    <div class="hero__poem">
+      <p data-ru="Язык — это не просто звук," data-en="A language is not merely a sound,">Тил — бул жөн гана үн эмес,</p>
+      <p data-ru="это дыхание предков," data-en="it is the breath of our ancestors,">бул — ата-бабанын деми,</p>
+      <p data-ru="это кочевье, что прошло сквозь века," data-en="a migration that crossed the centuries,">бул — кылымдан өткөн көчү,</p>
+      <p data-ru="это душа народа, что не умолкнет." data-en="the soul of a people that will not fall silent.">бул — үнү өчпөс эл жаны.</p>
+    </div>
+
+    <div class="hero__count" id="countdown">
+      <div class="cd"><b id="cdD">—</b><span data-ru="дней" data-en="days">күн</span></div>
+      <div class="cd"><b id="cdH">—</b><span data-ru="часов" data-en="hours">саат</span></div>
+      <div class="cd"><b id="cdM">—</b><span data-ru="минут" data-en="minutes">мүнөт</span></div>
+      <div class="cd"><b id="cdS">—</b><span data-ru="секунд" data-en="seconds">секунд</span></div>
+      <p class="cd__label" id="cdLabel" data-ru="до Дня государственного языка" data-en="until State Language Day">Мамлекеттик тил күнүнө чейин</p>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#about"><span data-ru="Прокрутите вниз" data-en="Scroll down">Төмөн жылдырыңыз</span><i></i></a>
+</section>
+
+<!-- ================= МАЙРАМ / О  ================= -->
+<section class="sec sec--about" id="about">
+  <div class="sec__orn sec__orn--left" style="background-image:url('assets/img/boz-ui.jpg')"></div>
+  <div class="wrap">
+    <p class="sec__num">01</p>
+    <h2 class="sec__title" data-ru="23 сентября" data-en="23 September">23-сентябрь</h2>
+    <p class="sec__sub" data-ru="День государственного языка Кыргызской Республики" data-en="State Language Day of the Kyrgyz Republic">Кыргыз Республикасынын Мамлекеттик тил күнү</p>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <div class="about__grid">
+      <div class="about__text reveal">
+        <p class="lead"
+           data-ru="23 сентября 1989 года Верховный Совет Киргизской ССР принял Закон «О государственном языке Киргизской ССР». В этот день кыргызский язык впервые за всю свою историю получил статус государственного."
+           data-en="On 23 September 1989 the Supreme Soviet of the Kirghiz SSR passed the Law “On the State Language”. On that day the Kyrgyz language became a state language for the first time in its entire history.">
+          1989-жылы 23-сентябрда Кыргыз ССРинин Жогорку Кеңеши «Кыргыз ССРинин мамлекеттик тили жөнүндө» Мыйзамды кабыл алган. Ошол күнү кыргыз тили өз тарыхында биринчи жолу мамлекеттик тил статусуна ээ болгон.
+        </p>
+        <p data-ru="Закон стал результатом долгой работы учёных, писателей и общественности: в конце 1980-х годов кыргызский язык всё реже звучал в делопроизводстве, науке и городских школах. Движение в защиту родного языка объединило интеллигенцию республики — и победило."
+           data-en="The law was the result of years of work by scholars, writers and ordinary citizens. By the late 1980s Kyrgyz was heard less and less in offices, in science and in city schools. A movement in defence of the mother tongue united the country’s intelligentsia — and it won.">
+          Мыйзам окумуштуулардын, жазуучулардын жана коомчулуктун узак аракетинин жемиши болду: 1980-жылдардын аягында кыргыз тили иш кагаздарында, илимде жана шаардык мектептерде улам сейрек угулуп калган эле. Эне тилди коргоо кыймылы республиканын зыялыларын бириктирип, максатына жетти.
+        </p>
+        <p data-ru="С 1990 года 23 сентября отмечается как День государственного языка — с концертами, конкурсами айтышей, диктантами, олимпиадами и научными конференциями по всей стране."
+           data-en="Since 1990, 23 September has been celebrated as State Language Day, with concerts, aitysh contests, national dictations, olympiads and academic conferences across the country.">
+          1990-жылдан бери 23-сентябрь Мамлекеттик тил күнү катары белгиленет: өлкө боюнча концерттер, айтыш сынактары, диктанттар, олимпиадалар жана илимий жыйындар өткөрүлөт.
+        </p>
+        <p data-ru="Сегодня статус языка закреплён Конституцией: кыргызский — государственный язык, русский — официальный. Действующий Закон «О государственном языке Кыргызской Республики» подписан 17 июля 2023 года."
+           data-en="Today the status of the language is fixed in the Constitution: Kyrgyz is the state language, Russian the official one. The current Law “On the State Language of the Kyrgyz Republic” was signed on 17 July 2023.">
+          Бүгүнкү күндө тилдин статусу Конституция менен бекитилген: кыргыз тили — мамлекеттик тил, орус тили — расмий тил. Колдонуудагы «Кыргыз Республикасынын мамлекеттик тили жөнүндө» Мыйзам 2023-жылы 17-июлда кол коюлган.
+        </p>
+      </div>
+
+      <aside class="about__card reveal">
+        <figure class="about__img">
+          <img src="assets/img/tunduk.jpg" alt="Боз үйдүн түндүгү" loading="lazy">
+          <figcaption data-ru="Түндүк — символ единства и продолжения рода. Он же в центре флага Кыргызстана."
+                      data-en="The tunduk, the crown of the yurt, stands for unity and the continuation of the family line. It is also at the centre of the Kyrgyz flag.">Түндүк — ынтымактын жана уланган тукумдун белгиси. Ал Кыргызстандын желегинин так ортосунда турат.</figcaption>
+        </figure>
+        <ul class="about__list">
+          <li><b>1989</b><span data-ru="Закон о государственном языке" data-en="Law on the state language">Мамлекеттик тил жөнүндө Мыйзам</span></li>
+          <li><b>1993</b><span data-ru="Статус закреплён в Конституции" data-en="Status written into the Constitution">Статус Конституцияда бекитилген</span></li>
+          <li><b>2004</b><span data-ru="Новая редакция закона (2 апреля)" data-en="New version of the law (2 April)">Мыйзамдын жаңы редакциясы (2-апрель)</span></li>
+          <li><b>2023</b><span data-ru="Действующий закон (17 июля)" data-en="The law in force (17 July)">Колдонуудагы мыйзам (17-июль)</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ТАРЫХ================= -->
+<section class="sec sec--history" id="history">
+  <div class="sec__stripe" style="background-image:url('assets/img/ornament-flat.jpg')"></div>
+  <div class="wrap">
+    <p class="sec__num">02</p>
+    <h2 class="sec__title" data-ru="История языка" data-en="History of the language">Тилдин тарыхы</h2>
+    <p class="sec__sub" data-ru="От рунических камней до цифровой эпохи" data-en="From runic stones to the digital age">Руна жазылган таштардан санарип доорго чейин</p>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <ol class="tl">
+      <li class="tl__i reveal">
+        <span class="tl__y">VIII–X <i data-ru="вв." data-en="c.">к.</i></span>
+        <h3 data-ru="Орхоно-енисейские рунические надписи" data-en="Orkhon–Yenisei runic inscriptions">Орхон-Энисей руна жазуулары</h3>
+        <p data-ru="Древнейшие письменные памятники тюркских народов. На территории Кыргызстана найдены Таласские надписи — свидетельство того, что предки кыргызов имели собственную письменность более тысячи лет назад."
+           data-en="The oldest written monuments of the Turkic peoples. The Talas inscriptions found in Kyrgyzstan prove that the ancestors of the Kyrgyz had a script of their own more than a thousand years ago.">Түрк элдеринин эң байыркы жазма эстеликтери. Кыргызстандын аймагынан Талас жазуулары табылган — бул кыргыздардын ата-бабасы миң жылдан ашуун мурда өз жазуусуна ээ болгонун далилдейт.</p>
+      </li>
+      <li class="tl__i reveal">
+        <span class="tl__y">1069</span>
+        <h3 data-ru="Жусуп Баласагын, «Кутадгу билиг»" data-en="Jusup Balasagyn, “Kutadgu Bilig”">Жусуп Баласагын, «Куттуу билим»</h3>
+        <p data-ru="Первая большая поэма тюркского мира о мудрости, справедливости и государстве. Написана уроженцем Баласагуна — города на территории современного Кыргызстана."
+           data-en="The first great poem of the Turkic world, on wisdom, justice and the state. Its author came from Balasagun, a city in what is now Kyrgyzstan.">Түрк дүйнөсүндөгү акылмандык, адилеттик жана мамлекет жөнүндөгү биринчи чоң дастан. Автору — азыркы Кыргызстандын аймагындагы Баласагын шаарынын тургуну.</p>
+      </li>
+      <li class="tl__i reveal">
+        <span class="tl__y">1072–1074</span>
+        <h3 data-ru="Махмуд Кашгари, «Диван лугат ат-турк»" data-en="Mahmud Kashgari, “Dīwān Lughāt al-Turk”">Махмуд Кашгари, «Дивану лугати т-түрк»</h3>
+        <p data-ru="Первый словарь-энциклопедия тюркских языков. В нём кыргызы названы отдельным народом со своим языком — это одно из самых ранних упоминаний кыргызского языка в науке."
+           data-en="The first dictionary and encyclopaedia of the Turkic languages. It names the Kyrgyz as a distinct people with their own tongue — one of the earliest scholarly records of the Kyrgyz language.">Түрк тилдеринин биринчи сөздүк-энциклопедиясы. Анда кыргыздар өз тили бар өзүнчө эл катары аталат — бул кыргыз тили жөнүндө илимдеги эң алгачкы кабарлардын бири.</p>
+      </li>
+      <li class="tl__i reveal">
+        <span class="tl__y">XVI <i data-ru="в." data-en="c.">к.</i></span>
+        <h3 data-ru="«Манас» на бумаге" data-en="“Manas” on paper">«Манас» кагазда</h3>
+        <p data-ru="В труде «Маджму ат-Таварих» появляется первое письменное упоминание о Манасе. До этого эпос веками жил только в устах манасчы — и именно устная традиция сохранила язык в его полноте."
+           data-en="The chronicle “Majmu at-Tawarikh” carries the first written mention of Manas. Until then the epic had lived for centuries only on the lips of the manaschy — and it was that oral tradition that preserved the language in full.">«Мажму ат-Таварих» эмгегинде Манас жөнүндө биринчи жазма кабар пайда болот. Ага чейин эпос кылымдар бою манасчылардын оозунда гана жашаган — тилдин байлыгын так ошол оозеки салт сактап калган.</p>
+      </li>
+      <li class="tl__i reveal">
+        <span class="tl__y">1911</span>
+        <h3 data-ru="Первый кыргызский букварь" data-en="The first Kyrgyz primer">Биринчи кыргыз алиппеси</h3>
+        <p data-ru="Ишеналы Арабаев издаёт «Алиппе» на основе арабской графики — первую книгу, по которой кыргызские дети учились читать на родном языке."
+           data-en="Ishenaly Arabaev publishes “Alippe” in Arabic script — the first book from which Kyrgyz children learned to read in their own language.">Ишеналы Арабаев араб графикасынын негизинде «Алиппе» китебин жарыялайт — кыргыз балдары эне тилинде окууну үйрөнгөн биринчи китеп.</p>
+      </li>
+      <li class="tl__i reveal">
+        <span class="tl__y">1924</span>
+        <h3 data-ru="Газета «Эркин Тоо»" data-en="The newspaper “Erkin Too”">«Эркин Тоо» гезити</h3>
+        <p data-ru="7 ноября выходит первый номер первой кыргызской газеты. В том же году Касым Тыныстанов создаёт учебник «Эне тилибиз» — кыргызский язык впервые становится языком школы и печати."
+           data-en="On 7 November the first issue of the first Kyrgyz newspaper appears. The same year Kasym Tynystanov writes the textbook “Ene tilibiz” — and Kyrgyz becomes, for the first time, the language of school and of the press.">7-ноябрда биринчи кыргыз гезитинин алгачкы саны жарык көрөт. Ошол эле жылы Касым Тыныстанов «Эне тилибиз» окуу китебин түзөт — кыргыз тили биринчи жолу мектептин жана басманын тилине айланат.</p>
+      </li>
+      <li class="tl__i reveal">
+        <span class="tl__y">1928</span>
+        <h3 data-ru="Переход на латиницу" data-en="Switch to the Latin alphabet">Латын алфавитине өтүү</h3>
+        <p data-ru="Кыргызская письменность переходит с арабской графики на латинскую. Основную работу над новым алфавитом и орфографией ведёт Касым Тыныстанов."
+           data-en="Kyrgyz writing moves from Arabic to Latin script. The main work on the new alphabet and spelling rules is done by Kasym Tynystanov.">Кыргыз жазуусу араб графикасынан латын графикасына өтөт. Жаңы алфавит жана орфография боюнча негизги эмгекти Касым Тыныстанов аткарган.</p>
+      </li>
+      <li class="tl__i reveal">
+        <span class="tl__y">1940</span>
+        <h3 data-ru="Кириллица: 36 букв" data-en="Cyrillic: 36 letters">Кирилл жазуусу: 36 тамга</h3>
+        <p data-ru="Принят кириллический алфавит: 33 русские буквы плюс три собственные — ң, ө, ү. Этим алфавитом мы пишем и сегодня."
+           data-en="The Cyrillic alphabet is adopted: 33 Russian letters plus three of its own — ң, ө, ү. It is the alphabet still in use today.">Кирилл алфавити кабыл алынат: 33 орус тамгасы жана үч өзүнчө тамга — ң, ө, ү. Биз бүгүн да ушул алфавит менен жазабыз.</p>
+      </li>
+      <li class="tl__i reveal tl__i--hi">
+        <span class="tl__y">1989</span>
+        <h3 data-ru="Государственный язык" data-en="The state language">Мамлекеттик тил</h3>
+        <p data-ru="23 сентября принят Закон «О государственном языке». Главная дата в новейшей истории кыргызского языка."
+           data-en="On 23 September the Law “On the State Language” is passed — the key date in the modern history of the Kyrgyz language.">23-сентябрда «Мамлекеттик тил жөнүндө» Мыйзам кабыл алынат. Кыргыз тилинин жаңы тарыхындагы эң башкы күн.</p>
+      </li>
+      <li class="tl__i reveal">
+        <span class="tl__y">2013</span>
+        <h3 data-ru="«Манас» под защитой ЮНЕСКО" data-en="“Manas” protected by UNESCO">«Манас» ЮНЕСКОнун коргоосунда</h3>
+        <p data-ru="Трилогия «Манас», «Семетей», «Сейтек» внесена в Репрезентативный список нематериального культурного наследия человечества."
+           data-en="The trilogy “Manas”, “Semetey” and “Seytek” is inscribed on the Representative List of the Intangible Cultural Heritage of Humanity.">«Манас», «Семетей», «Сейтек» үчилтиги адамзаттын материалдык эмес маданий мурасынын тизмесине киргизилген.</p>
+      </li>
+      <li class="tl__i reveal">
+        <span class="tl__y">2023</span>
+        <h3 data-ru="Новый закон и цифровая эпоха" data-en="A new law and the digital age">Жаңы мыйзам жана санарип доор</h3>
+        <p data-ru="17 июля подписан действующий Закон о государственном языке. Кыргызский приходит в интернет: переводчики, распознавание речи, клавиатуры, онлайн-словари и ИИ-модели учатся говорить по-кыргызски."
+           data-en="On 17 July the current Law on the State Language is signed. Kyrgyz is moving online: translators, speech recognition, keyboards, digital dictionaries and AI models are all learning to speak it.">17-июлда колдонуудагы Мамлекеттик тил жөнүндө Мыйзамга кол коюлду. Кыргыз тили интернетке келе жатат: котормочулар, үн таануу, баскычтоптор, онлайн сөздүктөр жана жасалма интеллект кыргызча сүйлөөнү үйрөнүүдө.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- =================ЛИЧНОСТИ ================= -->
+<section class="sec sec--people" id="people">
+  <div class="wrap">
+    <p class="sec__num">03</p>
+    <h2 class="sec__title" data-ru="Личности" data-en="The people">Инсандар</h2>
+    <p class="sec__sub" data-ru="Те, кто сохранил, записал и прославил кыргызский язык" data-en="Those who saved the Kyrgyz language, wrote it down and carried it to the world">Кыргыз тилин сактаган, жазып калтырган жана дүйнөгө тааныткандар</p>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <div class="people">
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="ИА"><img src="assets/people/arabaev.jpg" alt="Ишеналы Арабаев" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Ишеналы Арабаев" data-en="Ishenaly Arabaev">Ишеналы Арабаев</h3>
+          <p class="p__years">1882 — 1933</p>
+          <p class="p__role" data-ru="Просветитель, автор первого букваря" data-en="Educator, author of the first primer">Агартуучу, биринчи алиппенин автору</p>
+          <p class="p__txt" data-ru="Издал в 1911 году «Алиппе» — первую кыргызскую азбуку. Открывал школы, готовил учителей, собирал фольклор и стоял у истоков кыргызской школы на родном языке. Сегодня его имя носит Кыргызский государственный университет."
+             data-en="In 1911 he published “Alippe”, the first Kyrgyz ABC. He opened schools, trained teachers, collected folklore and laid the foundation of native-language schooling. A state university in Bishkek bears his name today.">1911-жылы «Алиппе» — биринчи кыргыз алиппесин жарыялаган. Мектептерди ачкан, мугалимдерди даярдаган, фольклор чогулткан жана эне тилдеги кыргыз мектебинин башында турган. Бүгүн анын ысымын Кыргыз мамлекеттик университети алып жүрөт.</p>
+        </div>
+      </article>
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="КТ"><img src="assets/people/tynystanov.jpg" alt="Касым Тыныстанов" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Касым Тыныстанов" data-en="Kasym Tynystanov">Касым Тыныстанов</h3>
+          <p class="p__years">1901 — 1938</p>
+          <p class="p__role" data-ru="Основоположник кыргызского языкознания" data-en="Founder of Kyrgyz linguistics">Кыргыз тил илиминин негиздөөчүсү</p>
+          <p class="p__txt" data-ru="Учёный, поэт, нарком просвещения. Автор учебника «Эне тилибиз» (1924), создатель кыргызской грамматики, орфографии и терминологии, руководитель перехода на латиницу. Расстрелян в 1938 году, реабилитирован посмертно. Почти всё, чем мы пользуемся в письме, начинается с его работ."
+             data-en="Scholar, poet and People’s Commissar of Education. Author of the textbook “Ene tilibiz” (1924), creator of Kyrgyz grammar, spelling and terminology, and head of the switch to the Latin alphabet. Executed in 1938 and rehabilitated posthumously. Almost everything we use in writing today begins with his work.">Окумуштуу, акын, агартуу эл комиссары. «Эне тилибиз» (1924) окуу китебинин автору, кыргыз грамматикасын, орфографиясын жана терминологиясын түзгөн, латын жазуусуна өтүүнү жетектеген. 1938-жылы атууга кеткен, кийин акталган. Жазуубузда колдонгон нерселердин дээрлик баары анын эмгегинен башталат.</p>
+        </div>
+      </article>
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="ХК"><img src="assets/people/karasaev.jpg" alt="Хусаин Карасаев" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Хусаин Карасаев" data-en="Husain Karasaev">Хусаин Карасаев</h3>
+          <p class="p__years">1900 — 1998</p>
+          <p class="p__role" data-ru="Лексикограф, «отец» кыргызской орфографии" data-en="Lexicographer, father of Kyrgyz spelling">Лексикограф, кыргыз орфографиясынын атасы</p>
+          <p class="p__txt" data-ru="Почти семьдесят лет собирал слова родного языка. Автор орфографического словаря, словаря заимствований и знаменитого «Камус наама» — свода объяснений тысяч слов. Благодаря ему у кыргызского языка появилась единая норма письма."
+             data-en="For nearly seventy years he collected the words of his native language. He compiled the spelling dictionary, a dictionary of loanwords and the celebrated “Kamus naama”, explaining thousands of words. Thanks to him Kyrgyz acquired a single written standard.">Жетимиш жылга жакын эне тилинин сөздөрүн чогулткан. Орфографиялык сөздүктүн, кабыл алынган сөздөрдүн сөздүгүнүн жана атактуу «Камус наама» эмгегинин автору. Анын аркасында кыргыз тили бирдиктүү жазуу нормасына ээ болгон.</p>
+        </div>
+      </article>
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="КЮ"><img src="assets/people/yudahin.jpg" alt="Константин Юдахин" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Константин Юдахин" data-en="Konstantin Yudakhin">Константин Юдахин</h3>
+          <p class="p__years">1890 — 1975</p>
+          <p class="p__role" data-ru="Автор кыргызско-русского словаря" data-en="Author of the Kyrgyz–Russian dictionary">Кыргызча-орусча сөздүктүн түзүүчүсү</p>
+          <p class="p__txt" data-ru="Русский учёный, посвятивший жизнь кыргызскому языку. Его «Киргизско-русский словарь» (1940, расширенное издание 1965) до сих пор остаётся главным словарём языка: около 40 тысяч слов с примерами из эпоса и живой речи."
+             data-en="A Russian scholar who gave his life to the Kyrgyz language. His Kyrgyz–Russian dictionary (1940, expanded in 1965) is still the principal dictionary of the language: some 40,000 words with examples drawn from the epic and from living speech.">Өмүрүн кыргыз тилине арнаган орус окумуштуусу. Анын «Кыргызча-орусча сөздүгү» (1940, кеңейтилген басылышы 1965) бүгүнкү күнгө чейин тилдин башкы сөздүгү бойдон калууда: эпостон жана тирүү кептен алынган мисалдары менен 40 миңге жакын сөз.</p>
+        </div>
+      </article>
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="БЮ"><img src="assets/people/yunusaliev.jpg" alt="Болот Юнусалиев" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Болот Юнусалиев" data-en="Bolot Yunusaliev">Болот Юнусалиев</h3>
+          <p class="p__years">1913 — 1970</p>
+          <p class="p__role" data-ru="Академик, диалектолог" data-en="Academician, dialectologist">Академик, диалектолог</p>
+          <p class="p__txt" data-ru="Исследовал говоры кыргызского языка от Таласа до Памира и доказал его глубокие исторические связи с языками Южной Сибири. Автор «Кыргызской диалектологии», один из редакторов академического издания эпоса «Манас»."
+             data-en="He studied Kyrgyz dialects from Talas to the Pamirs and showed their deep historical ties with the languages of southern Siberia. Author of “Kyrgyz Dialectology” and an editor of the academic edition of “Manas”.">Таластан Памирге чейинки кыргыз тилинин говорлорун изилдеп, анын Түштүк Сибирь тилдери менен терең тарыхый байланышын далилдеген. «Кыргыз диалектологиясы» эмгегинин автору, «Манас» эпосунун академиялык басылышынын редакторлорунун бири.</p>
+        </div>
+      </article>
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="СО"><img src="assets/people/orozbakov.jpg" alt="Сагымбай Орозбаков" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Сагымбай Орозбаков" data-en="Sagymbai Orozbakov">Сагымбай Орозбаков</h3>
+          <p class="p__years">1867 — 1930</p>
+          <p class="p__role" data-ru="Великий манасчы" data-en="The great manaschy">Улуу манасчы</p>
+          <p class="p__txt" data-ru="Первым согласился, чтобы «Манас» записали на бумагу: в 1922–1926 годах с его слов было записано более 180 тысяч строк. Так устный океан языка впервые был сохранён в тексте."
+             data-en="He was the first to let “Manas” be written down: between 1922 and 1926 more than 180,000 lines were taken from his recitation. The ocean of oral language was preserved in text for the first time.">«Манасты» кагазга түшүрүүгө биринчи болуп макул болгон: 1922–1926-жылдары анын оозунан 180 миңден ашуун сап жазылып алынган. Ошентип тилдин оозеки океаны биринчи жолу текстте сакталып калган.</p>
+        </div>
+      </article>
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="СК"><img src="assets/people/karalaev.jpg" alt="Саякбай Каралаев" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Саякбай Каралаев" data-en="Sayakbai Karalaev">Саякбай Каралаев</h3>
+          <p class="p__years">1894 — 1971</p>
+          <p class="p__role" data-ru="«Гомер XX века»" data-en="“The Homer of the 20th century”">«XX кылымдын Гомери»</p>
+          <p class="p__txt" data-ru="Его вариант трилогии — 500 553 строки, крупнейшая запись эпоса в мире. Он держал в памяти объём, в двадцать раз превышающий «Илиаду» и «Одиссею» вместе взятые, и каждое сказание исполнял по-новому."
+             data-en="His version of the trilogy runs to 500,553 lines — the largest recording of an epic anywhere in the world. He held in memory twenty times the length of the Iliad and the Odyssey combined, and performed every tale anew each time.">Анын үчилтик варианты — 500 553 сап, дүйнөдөгү эпостун эң чоң жазмасы. Ал «Илиада» менен «Одиссеяны» кошкондон жыйырма эсе көп сөздү жатка билген жана ар бир айтуусун жаңыча жаңырткан.</p>
+        </div>
+      </article>
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="ТС"><img src="assets/people/toktogul.jpg" alt="Токтогул Сатылганов" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Токтогул Сатылганов" data-en="Toktogul Satylganov">Токтогул Сатылганов</h3>
+          <p class="p__years">1864 — 1933</p>
+          <p class="p__role" data-ru="Акын, мастер айтыша" data-en="Akyn, master of the aitysh">Акын, айтыштын устаты</p>
+          <p class="p__txt" data-ru="Голос народа, певец-импровизатор, чьи песни расходились по всему Кыргызстану без единой строчки на бумаге. Его айтыши — школа живого, острого и точного слова."
+             data-en="The voice of the people: an improvising singer whose songs travelled the whole country without a single line ever being written down. His aitysh duels are a school of living, sharp and exact speech.">Элдин үнү, ыр менен төкмө айткан акын — анын ырлары бир да сап кагазга жазылбай туруп бүткүл Кыргызстанга тараган. Анын айтыштары — тирүү, курч жана так сөздүн мектеби.</p>
+        </div>
+      </article>
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="АО"><img src="assets/people/osmonov.jpg" alt="Алыкул Осмонов" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Алыкул Осмонов" data-en="Alykul Osmonov">Алыкул Осмонов</h3>
+          <p class="p__years">1915 — 1950</p>
+          <p class="p__role" data-ru="Поэт и переводчик" data-en="Poet and translator">Акын жана котормочу</p>
+          <p class="p__txt" data-ru="Прожил всего 35 лет и обновил кыргызскую поэзию. Перевёл на кыргызский «Витязя в тигровой шкуре» Руставели, Пушкина и Шекспира — и доказал, что родной язык способен вместить любую вершину мировой литературы."
+             data-en="He lived only 35 years and remade Kyrgyz poetry. He translated Rustaveli’s “The Knight in the Panther’s Skin”, Pushkin and Shakespeare — proving that his native language could hold any summit of world literature.">Болгону 35 жыл жашап, кыргыз поэзиясын жаңылаган. Руставелинин «Жолборс терисин жамынган баатырын», Пушкинди, Шекспирди кыргызчага которуп, эне тил дүйнөлүк адабияттын каалаган бийиктигин көтөрө аларын далилдеген.</p>
+        </div>
+      </article>
+
+      <article class="p reveal">
+        <figure class="p__photo" data-mono="ЧА"><img src="assets/people/aitmatov.jpg" alt="Чынгыз Айтматов" loading="lazy" onerror="this.remove()"></figure>
+        <div class="p__body">
+          <h3 data-ru="Чынгыз Айтматов" data-en="Chinghiz Aitmatov">Чынгыз Айтматов</h3>
+          <p class="p__years">1928 — 2008</p>
+          <p class="p__role" data-ru="Писатель, голос Кыргызстана в мире" data-en="Writer, Kyrgyzstan’s voice in the world">Жазуучу, Кыргызстандын дүйнөдөгү үнү</p>
+          <p class="p__txt" data-ru="Его книги переведены более чем на 170 языков. «Джамиля», «Белый пароход», «И дольше века длится день» начинались с кыргызского слова — и благодаря им мир услышал сам язык, его образы и его боль."
+             data-en="His books have been translated into more than 170 languages. “Jamila”, “The White Steamship” and “The Day Lasts More Than a Hundred Years” all began with a Kyrgyz word — and through them the world heard the language itself, its images and its pain.">Анын китептери 170тен ашуун тилге которулган. «Жамийла», «Ак кеме», «Кылым карытар бир күн» кыргыз сөзүнөн башталган — алардын аркасында дүйнө тилдин өзүн, анын образдарын жана оорусун укту.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ФАКТЫЛАР ================= -->
+<section class="sec sec--facts" id="facts">
+  <div class="sec__orn sec__orn--right" style="background-image:url('assets/img/boz-ui.jpg')"></div>
+  <div class="wrap">
+    <p class="sec__num">04</p>
+    <h2 class="sec__title" data-ru="Язык в цифрах" data-en="The language in numbers">Сандар менен тил</h2>
+    <p class="sec__sub" data-ru="Коротко о том, что стоит за словом «кыргызча»" data-en="What stands behind the word “kyrgyzcha”">«Кыргызча» деген сөздүн артында эмне турат</p>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <div class="stats">
+      <div class="stat reveal"><b data-count="36">0</b><span data-ru="букв в алфавите: 33 + ң, ө, ү" data-en="letters in the alphabet: 33 + ң, ө, ү">алфавиттеги тамга: 33 + ң, ө, ү</span></div>
+      <div class="stat reveal"><b data-count="8">0</b><span data-ru="гласных звука и закон сингармонизма" data-en="vowels and the law of vowel harmony">үндүү тыбыш жана үндөштүк закону</span></div>
+      <div class="stat reveal"><b data-count="5" data-suffix=" млн+" data-suffix-en=" M+" data-suffix-kg=" млн+">0</b><span data-ru="человек говорят на кыргызском" data-en="people speak Kyrgyz">адам кыргызча сүйлөйт</span></div>
+      <div class="stat reveal"><b data-count="500553">0</b><span data-ru="строк в «Манасе» Саякбая Каралаева" data-en="lines in Karalaev’s “Manas”">сап Саякбай Каралаевдин «Манасында»</span></div>
+      <div class="stat reveal"><b data-count="1072">0</b><span data-ru="год первого упоминания языка в словаре Кашгари" data-en="the year Kashgari first recorded the language">жыл: Кашгаринин сөздүгүндөгү алгачкы кабар</span></div>
+      <div class="stat reveal"><b data-count="170" data-suffix="+">0</b><span data-ru="языков, на которые переведён Айтматов" data-en="languages Aitmatov has been translated into">тил: Айтматов ушунча тилге которулган</span></div>
+    </div>
+
+    <div class="facts">
+      <div class="fact reveal">
+        <h3 data-ru="Три собственные буквы" data-en="Three letters of its own">Үч өзүнчө тамга</h3>
+        <p class="fact__big">ң ө ү</p>
+        <p data-ru="Ими кыргызский отличается от русской кириллицы. «Ө» и «Ү» — губные гласные, «Ң» — носовой звук: «көңүл», «түшүнүү», «таң»."
+           data-en="These set Kyrgyz apart from Russian Cyrillic. “Ө” and “Ү” are rounded vowels, “Ң” a nasal sound: köŋül, tüshünüü, taŋ.">Ушулар менен кыргыз жазуусу орус кириллицасынан айырмаланат. «Ө» жана «Ү» — эриндик үндүүлөр, «Ң» — мурундук тыбыш: «көңүл», «түшүнүү», «таң».</p>
+      </div>
+      <div class="fact reveal">
+        <h3 data-ru="Закон сингармонизма" data-en="Vowel harmony">Үндөштүк закону</h3>
+        <p class="fact__big">үй‑лөр‑үм</p>
+        <p data-ru="Окончания подстраиваются под гласные корня: «бала-лар», «көз-дөр», «кол-дор», «үй-лөр». Благодаря этому кыргызская речь звучит так плавно."
+           data-en="Endings adapt to the vowels of the stem: bala-lar, köz-dör, kol-dor, üy-lör. This is why Kyrgyz speech flows so smoothly.">Мүчөлөр уңгудагы үндүүлөргө ыкташат: «бала-лар», «көз-дөр», «кол-дор», «үй-лөр». Ошондуктан кыргыз кеби мынчалык жатык угулат.</p>
+      </div>
+      <div class="fact reveal">
+        <h3 data-ru="Одно слово — целое предложение" data-en="One word, a whole sentence">Бир сөз — бүтүн сүйлөм</h3>
+        <p class="fact__big">бара албайм</p>
+        <p data-ru="Кыргызский — агглютинативный язык: смыслы «приклеиваются» к корню цепочкой. «Иште-й-тер-и-биз-ди» — то, что по-русски требует пяти слов."
+           data-en="Kyrgyz is agglutinative: meanings are glued onto the stem in a chain. “Ishte-y-ter-i-biz-di” says in one word what English needs a whole clause for.">Кыргыз тили — агглютинативдик тил: маанилер уңгуга чынжырча жабышат. «Иште-й-тер-и-биз-ди» — орусча беш сөз талап кылган нерсе.</p>
+      </div>
+      <div class="fact reveal">
+        <h3 data-ru="Кыпчакская ветвь" data-en="The Kipchak branch">Кыпчак бутагы</h3>
+        <p class="fact__big">түрк</p>
+        <p data-ru="Кыргызский входит в тюркскую семью. Казах, татарин или башкир поймут многое без перевода — общая основа насчитывает больше тысячи лет."
+           data-en="Kyrgyz belongs to the Turkic family. A Kazakh, a Tatar or a Bashkir will understand much of it without translation — the shared foundation is over a thousand years old.">Кыргыз тили түрк тилдер үй-бүлөсүнө кирет. Казак, татар же башкыр көп нерсени котормосуз түшүнөт — жалпы негиз миң жылдан ашык.</p>
+      </div>
+      <div class="fact reveal">
+        <h3 data-ru="Самый длинный эпос мира" data-en="The longest epic in the world">Дүйнөдөгү эң узун эпос</h3>
+        <p class="fact__big">«Манас»</p>
+        <p data-ru="В двадцать раз длиннее «Илиады» и «Одиссеи» вместе взятых. Это не просто поэма, а живой словарь древнего языка: имена, оружие, обычаи, названия трав и звёзд."
+           data-en="Twenty times longer than the Iliad and the Odyssey together. It is not merely a poem but a living dictionary of the old language: names, weapons, customs, the words for herbs and stars.">«Илиада» менен «Одиссеяны» кошкондон жыйырма эсе узун. Бул жөн гана дастан эмес, байыркы тилдин тирүү сөздүгү: ысымдар, курал-жарак, салт, чөптүн жана жылдыздардын аттары.</p>
+      </div>
+      <div class="fact reveal">
+        <h3 data-ru="Три алфавита за сто лет" data-en="Three alphabets in a century">Жүз жылда үч алфавит</h3>
+        <p class="fact__big">عربي → latin → кир</p>
+        <p data-ru="Арабская графика до 1928 года, латиница 1928–1940, кириллица с 1940 года. Мало какой язык мира менял письменность так часто — и сохранил себя."
+           data-en="Arabic script until 1928, Latin from 1928 to 1940, Cyrillic since 1940. Few languages have changed their writing system so often — and survived it.">1928-жылга чейин араб графикасы, 1928–1940 латын, 1940-жылдан кирилл жазуусу. Дүйнөдө жазуусун ушунчалык көп алмаштырып, өзүн сактап калган тил аз.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= СӨЗ КАЗЫНА ================= -->
+<section class="sec sec--words" id="words">
+  <div class="sec__stripe sec__stripe--right" style="background-image:url('assets/img/ornament-flat.jpg')"></div>
+  <div class="wrap">
+    <p class="sec__num">05</p>
+    <h2 class="sec__title" data-ru="Сокровищница слов" data-en="A treasury of words">Сөз казына</h2>
+    <p class="sec__sub" data-ru="Нажмите на карточку — она перевернётся" data-en="Tap a card and it will turn over">Картага баскыла — ал оодарылат</p>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <div class="cards" id="wordCards"></div>
+
+    <div class="prov">
+      <h3 class="prov__t" data-ru="Народные пословицы о слове" data-en="Folk proverbs about the word">Сөз жөнүндө элдик макалдар</h3>
+      <blockquote class="reveal">
+        <p>«Сөз сөөктөн өтөт, таяк эттен өтөт.»</p>
+        <cite data-ru="Слово пронзает кость, палка — только плоть." data-en="A word cuts through bone; a stick only through flesh.">Сөздүн күчү сокку урганынан да өтүп кетет.</cite>
+      </blockquote>
+      <blockquote class="reveal">
+        <p>«Жакшы сөз — жан эритет, жаман сөз — жан кейитет.»</p>
+        <cite data-ru="Доброе слово душу согревает, злое — ранит." data-en="A kind word warms the soul; a cruel one wounds it.">Жылуу сөз жүрөктү жылытат, суук сөз жаралайт.</cite>
+      </blockquote>
+      <blockquote class="reveal">
+        <p>«Көп сүйлөгөн — көйрөң, аз сүйлөгөн — көсөм.»</p>
+        <cite data-ru="Кто много говорит — пустослов, кто говорит мало — мудрец." data-en="He who talks much is a chatterer; he who speaks little is wise.">Сөздүн саны эмес, сапаты баалуу.</cite>
+      </blockquote>
+      <blockquote class="reveal">
+        <p>«Тил — элдин жаны.»</p>
+        <cite data-ru="Язык — душа народа." data-en="A language is the soul of a people.">Тил жоголсо, эл да жоголот.</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ВИКТОРИНА ================= -->
+<section class="sec sec--quiz" id="quiz">
+  <div class="sec__pattern" style="background-image:url('assets/img/ornament-flat.jpg')"></div>
+  <div class="wrap wrap--narrow">
+    <p class="sec__num">06</p>
+    <h2 class="sec__title" data-ru="Викторина" data-en="Quiz">Викторина</h2>
+    <p class="sec__sub" data-ru="12 вопросов о языке, истории и людях" data-en="12 questions on the language, its history and its people">Тил, тарых жана инсандар жөнүндө 12 суроо</p>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <div class="quiz" id="quizBox">
+      <div class="quiz__start" id="quizStart">
+        <svg class="orn" viewBox="0 0 300 300"><use href="#orn-big"/></svg>
+        <p data-ru="Проверьте себя: 12 вопросов, по 4 варианта ответа. После каждого ответа — короткое пояснение."
+           data-en="Test yourself: 12 questions, four options each. A short explanation follows every answer.">Өзүңүздү сынап көрүңүз: 12 суроо, ар биринде 4 жооп. Ар бир жооптон кийин кыскача түшүндүрмө берилет.</p>
+        <button class="btn" id="quizStartBtn" type="button" data-ru="Начать викторину" data-en="Start the quiz">Викторинаны баштоо</button>
+      </div>
+
+      <div class="quiz__play" id="quizPlay" hidden>
+        <div class="quiz__bar"><i id="quizBar"></i></div>
+        <div class="quiz__meta">
+          <span id="quizCounter">1 / 12</span>
+          <span id="quizScore">Упай: 0</span>
+        </div>
+        <h3 class="quiz__q" id="quizQ"></h3>
+        <div class="quiz__opts" id="quizOpts"></div>
+        <p class="quiz__exp" id="quizExp" hidden></p>
+        <button class="btn btn--ghost" id="quizNext" type="button" hidden>Кийинки</button>
+      </div>
+
+      <div class="quiz__result" id="quizResult" hidden>
+        <svg class="orn" viewBox="0 0 300 300"><use href="#orn-big"/></svg>
+        <p class="quiz__resnum"><b id="quizFinal">0</b> / 12</p>
+        <h3 id="quizVerdict"></h3>
+        <p id="quizVerdictTxt"></p>
+        <div class="quiz__acts">
+          <button class="btn" id="quizAgain" type="button" data-ru="Пройти заново" data-en="Try again">Кайра өтүү</button>
+          <a class="btn btn--ghost" href="#game" data-ru="К мини-игре" data-en="Go to the game">Оюнга өтүү</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= МИНИ-ОЮН ================= -->
+<section class="sec sec--game" id="game">
+  <div class="sec__orn sec__orn--left" style="background-image:url('assets/img/tunduk.jpg')"></div>
+  <div class="wrap">
+    <p class="sec__num">07</p>
+    <h2 class="sec__title" data-ru="Мини-игра «Найди пару»" data-en="Mini-game: “Find the pair”">«Түгөйүн тап» оюну</h2>
+    <p class="sec__sub" data-ru="Откройте две карточки: кыргызское слово и его значение" data-en="Turn over two cards: a Kyrgyz word and its meaning">Эки картаны ачыңыз: кыргызча сөз жана анын мааниси</p>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <div class="game">
+      <div class="game__hud">
+        <div class="hud"><b id="gTime">00:00</b><span data-ru="время" data-en="time">убакыт</span></div>
+        <div class="hud"><b id="gMoves">0</b><span data-ru="ходов" data-en="moves">кадам</span></div>
+        <div class="hud"><b id="gPairs">0 / 8</b><span data-ru="пар найдено" data-en="pairs found">табылган түгөй</span></div>
+        <div class="hud"><b id="gBest">—</b><span data-ru="лучший результат" data-en="best result">эң жакшы жыйынтык</span></div>
+        <button class="btn btn--sm" id="gRestart" type="button" data-ru="Заново" data-en="Restart">Кайра баштоо</button>
+      </div>
+      <div class="board" id="board"></div>
+      <div class="game__win" id="gWin" hidden>
+        <h3 data-ru="Отлично! Все пары найдены" data-en="Well done! All pairs found">Азамат! Бардык түгөйлөр табылды</h3>
+        <p id="gWinTxt"></p>
+        <button class="btn" id="gAgain" type="button" data-ru="Сыграть ещё" data-en="Play again">Дагы ойноо</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot">
+  <div class="foot__bg" style="background-image:url('assets/img/hero.jpg')"></div>
+  <div class="wrap">
+    <svg class="orn" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+    <p class="foot__big">ТИЛИҢ ТИРҮҮ БОЛСО, ЭЛИҢ ТИРҮҮ</p>
+    <p class="foot__sub" data-ru="Пока жив язык — жив народ" data-en="While the language lives, the people live">Тил жашаса, эл жашайт</p>
+    <div class="foot__meta">
+      <span>23.09 — <span data-ru="День государственного языка" data-en="State Language Day">Мамлекеттик тил күнү</span></span>
+      <span data-ru="Материал подготовлен к Дню кыргызского языка" data-en="Made for Kyrgyz Language Day">Кыргыз тили күнүнө карата даярдалды</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" type="button" aria-label="Жогору">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>
