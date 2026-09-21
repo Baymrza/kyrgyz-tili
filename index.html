@@ -71,6 +71,16 @@
     <a href="#quiz"    data-ru="Викторина"   data-en="Quiz">Викторина</a>
     <a href="#game"    data-ru="Мини-игра"   data-en="Game">Оюн</a>
   </nav>
+  <a class="glassbtn" href="tourist.html" target="_blank" rel="noopener">
+    <span class="glassbtn__ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M3 12h18"/>
+        <path d="M12 3c2.4 2.6 3.7 5.6 3.7 9s-1.3 6.4-3.7 9c-2.4-2.6-3.7-5.6-3.7-9S9.6 5.6 12 3z"/>
+      </svg>
+    </span>
+    <span class="glassbtn__t" data-ru="Для туристов" data-en="For tourists">Туристтерге</span>
+  </a>
   <div class="lang" role="group" aria-label="Тил / Язык / Language">
     <button type="button" class="lang__b is-on" data-lang="kg">KG</button>
     <button type="button" class="lang__b" data-lang="ru">RU</button>
@@ -172,6 +182,7 @@
 
 <!-- ================= ТАРЫХ================= -->
 <section class="sec sec--history" id="history">
+  <div class="sec__texture" style="background-image:url('assets/img/pattern-line.jpg')"></div>
   <div class="sec__stripe" style="background-image:url('assets/img/ornament-flat.jpg')"></div>
   <div class="wrap">
     <p class="sec__num">02</p>
@@ -252,6 +263,7 @@
 
 <!-- =================ЛИЧНОСТИ ================= -->
 <section class="sec sec--people" id="people">
+  <div class="sec__rosette" style="background-image:url('assets/img/rosette.jpg')"></div>
   <div class="wrap">
     <p class="sec__num">03</p>
     <h2 class="sec__title" data-ru="Личности" data-en="The people">Инсандар</h2>
@@ -374,8 +386,25 @@
   </div>
 </section>
 
+<!-- ================= КРЕДО / БОЛЬШАЯ ФРАЗА ================= -->
+<section class="creed">
+  <div class="creed__bg" style="background-image:url('assets/img/shyrdak.jpg')"></div>
+  <div class="creed__orn" style="background-image:url('assets/img/ornament-mark.jpg')"></div>
+  <div class="wrap">
+    <svg class="orn creed__div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+    <blockquote class="creed__q">
+      <p class="creed__big">Эне тили болбосо,<br>аты аталбайт улуттун!</p>
+      <p class="creed__sign">Эне тилим, Кыргыз тил.</p>
+    </blockquote>
+    <p class="creed__tr"
+       data-ru="Без родного языка у народа не будет имени. Родной мой язык — кыргызский язык."
+       data-en="Without its mother tongue a nation has no name. My mother tongue is Kyrgyz.">Эне тил — улуттун аты, жүзү жана тагдыры.</p>
+  </div>
+</section>
+
 <!-- ================= ФАКТЫЛАР ================= -->
 <section class="sec sec--facts" id="facts">
+  <div class="sec__texture" style="background-image:url('assets/img/pattern-line.jpg')"></div>
   <div class="sec__orn sec__orn--right" style="background-image:url('assets/img/boz-ui.jpg')"></div>
   <div class="wrap">
     <p class="sec__num">04</p>

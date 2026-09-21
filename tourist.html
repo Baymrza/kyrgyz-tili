@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кыргызча сүйлөшөлү</title>
+<meta name="description" content="Разговорник и переводчик для гостей Кыргызстана: кыргызский ↔ русский, английский и другие языки.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tourist.css">
+</head>
+<body class="tpage">
+
+<svg class="sprite" aria-hidden="true">
+  <symbol id="horn" viewBox="-40 -40 80 80">
+    <path d="M0 -3 C -14 -3 -23 -11 -23 -19 C -23 -28 -14 -33 -7 -29 C -1 -25 -2 -17 -8 -16 C -13 -15 -15 -20 -11 -22"/>
+  </symbol>
+  <symbol id="orn-div" viewBox="0 0 300 60">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="translate(150 30)">
+        <use href="#horn"/><use href="#horn" transform="scale(-1 1)"/>
+        <use href="#horn" transform="scale(1 -1)"/><use href="#horn" transform="scale(-1 -1)"/>
+        <path d="M0 -6 L6 0 L0 6 L-6 0 Z"/>
+      </g>
+      <path d="M20 30 H105 M195 30 H280"/>
+      <circle cx="113" cy="30" r="2.5"/><circle cx="187" cy="30" r="2.5"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- ================= ШАПКА ================= -->
+<header class="tbar">
+  <a class="tbar__back" href="index.html">
+    <span aria-hidden="true">←</span>
+    <span data-ru="К сайту о языке" data-en="Back to the language site">Сайтка кайтуу</span>
+  </a>
+  <div class="lang" role="group" aria-label="Тил / Язык / Language">
+    <button type="button" class="lang__b is-on" data-lang="kg">KG</button>
+    <button type="button" class="lang__b" data-lang="ru">RU</button>
+    <button type="button" class="lang__b" data-lang="en">EN</button>
+  </div>
+</header>
+
+<!-- ================= ОБЛОЖКА ================= -->
+<section class="thero">
+  <div class="thero__bg" style="background-image:url('assets/img/hero.jpg')"></div>
+  <div class="thero__veil"></div>
+  <div class="wrap">
+    <p class="thero__eyebrow" data-ru="Гостям Кыргызстана" data-en="For guests of Kyrgyzstan">Кыргызстандын конокторуна</p>
+    <h1 class="thero__title">Кыргызча сүйлөшөлү</h1>
+    <p class="thero__sub"
+       data-ru="Скажите хотя бы одно слово на кыргызском — и вам улыбнутся. Здесь переводчик и живые фразы, которые действительно пригодятся в дороге."
+       data-en="Say even one word in Kyrgyz and you will be met with a smile. Here is a translator and the phrases that actually help on the road.">
+      Кыргызча бир гана сөз айтыңыз — сизге жылмайышат. Бул жерде котормочу жана жолдо чын эле керек болгон тирүү сөздөр бар.
+    </p>
+    <p class="thero__proverb">«Конок келсе, кут келет»</p>
+    <p class="thero__proverbtr" data-ru="Придёт гость — придёт и благодать. Кыргызская пословица."
+       data-en="When a guest comes, blessing comes with him. A Kyrgyz proverb.">Конок — үйдүн куту. Кыргыз макалы.</p>
+  </div>
+</section>
+
+<!-- ================= ПЕРЕВОДЧИК ================= -->
+<section class="tsec" id="translator">
+  <div class="wrap wrap--narrow">
+    <h2 class="tsec__title" data-ru="Переводчик" data-en="Translator">Котормочу</h2>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <div class="tr">
+      <div class="tr__head">
+        <label class="tr__pick">
+          <span class="tr__picklab" data-ru="С языка" data-en="From">Кайсы тилден</span>
+          <select id="trFrom"></select>
+        </label>
+        <button class="tr__swap" id="trSwap" type="button" aria-label="Тилдерди алмаштыруу">⇄</button>
+        <label class="tr__pick">
+          <span class="tr__picklab" data-ru="На язык" data-en="Into">Кайсы тилге</span>
+          <select id="trTo"></select>
+        </label>
+      </div>
+
+      <div class="tr__io">
+        <div class="tr__side">
+          <textarea id="trIn" rows="4" maxlength="1000"
+            data-ph-kg="Бул жерге жазыңыз…" data-ph-ru="Напишите здесь…" data-ph-en="Type here…"></textarea>
+          <div class="tr__tools">
+            <button class="tbtn tbtn--mic" id="trMic" type="button">
+              <span class="tbtn__ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3.5"/>
+                </svg>
+              </span>
+              <span data-ru="Говорить" data-en="Speak">Сүйлөө</span>
+            </button>
+            <button class="tbtn" id="trClear" type="button" data-ru="Очистить" data-en="Clear">Тазалоо</button>
+            <span class="tr__count" id="trCount">0 / 1000</span>
+          </div>
+        </div>
+
+        <div class="tr__side tr__side--out">
+          <div class="tr__out" id="trOut" aria-live="polite"></div>
+          <div class="tr__tools">
+            <button class="tbtn tbtn--go" id="trGo" type="button" data-ru="Перевести" data-en="Translate">Которуу</button>
+            <button class="tbtn" id="trPlay" type="button" data-ru="Прослушать" data-en="Listen">Угуу</button>
+            <button class="tbtn" id="trCopy" type="button" data-ru="Копировать" data-en="Copy">Көчүрүү</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="tr__status" id="trStatus" hidden></p>
+
+      <div class="tr__note">
+        <p data-ru="Микрофон в браузерах понимает русский, английский и другие крупные языки, но кыргызскую речь пока не распознаёт. Кыргызскую фразу наберите или возьмите готовую из разговорника ниже."
+           data-en="Browser speech input understands Russian, English and other major languages, but it does not yet recognise spoken Kyrgyz. Type a Kyrgyz phrase or take a ready one from the phrasebook below.">
+          Браузерлердин микрофону орус, англис жана башка чоң тилдерди түшүнөт, бирок кыргыз кебин азырынча тааныбайт. Кыргызча сүйлөмдү колдон жазыңыз же төмөнкү сөздүктөн алыңыз.
+        </p>
+        <a class="tbtn tbtn--ghost" id="trGoogle" href="https://translate.google.com/?sl=ky&tl=en" target="_blank" rel="noopener"
+           data-ru="Проверить в Google Переводчике" data-en="Check in Google Translate">Google котормочусунда текшерүү</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= РАЗГОВОРНИК ================= -->
+<section class="tsec tsec--book" id="phrases">
+  <div class="sec__texture" style="background-image:url('assets/img/pattern-line.jpg')"></div>
+  <div class="wrap">
+    <h2 class="tsec__title" data-ru="Разговорник" data-en="Phrasebook">Сүйлөшүү китепчеси</h2>
+    <p class="tsec__sub" data-ru="36 фраз, которые выручают в дороге. Нажмите на фразу, чтобы услышать её."
+       data-en="36 phrases that really help on the road. Tap a phrase to hear it.">Жолдо жардам берген 36 сөз айкашы. Угуу үчүн сөздүн үстүнө басыңыз.</p>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <div class="cats" id="cats"></div>
+    <div class="phrases" id="phrases-list"></div>
+  </div>
+</section>
+
+<footer class="tfoot">
+  <div class="wrap">
+    <p class="tfoot__big">Жакшы жол, кутман конок!</p>
+    <p class="tfoot__sub" data-ru="Доброй дороги, дорогой гость!" data-en="Safe travels, honoured guest!">Жолуңуз ачык болсун!</p>
+    <a class="tbtn tbtn--ghost" href="index.html" data-ru="Вернуться на сайт о кыргызском языке" data-en="Back to the Kyrgyz language site">Кыргыз тили жөнүндөгү сайтка кайтуу</a>
+  </div>
+</footer>
+
+<script src="tourist.js"></script>
+</body>
+</html>

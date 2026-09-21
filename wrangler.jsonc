@@ -1,8 +1,14 @@
-// Настройки Cloudflare: сайт статический, Worker просто раздаёт файлы из корня.
+// Настройки Cloudflare.
+// Сайт раздаётся как статические файлы, а /api/translate обрабатывает Worker.
 {
   "name": "kyrgyz-tili",
   "compatibility_date": "2025-09-01",
+  "main": "worker/index.js",
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "ai": {
+    "binding": "AI"
   }
 }
