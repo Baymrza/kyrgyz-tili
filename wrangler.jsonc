@@ -1,7 +1,6 @@
 // Настройки Cloudflare.
 // Сайт раздаётся как статические файлы, а /api/translate и /api/reviews
-// обрабатывает Worker. Для отзывов нужен KV-namespace "REVIEWS" — его ID
-// добавится сюда отдельной правкой, как только он будет создан в панели.
+// обрабатывает Worker. Отзывы хранятся в KV-namespace "REVIEWS".
 {
   "name": "kyrgyz-tili",
   "compatibility_date": "2025-09-01",
@@ -12,5 +11,8 @@
   },
   "ai": {
     "binding": "AI"
-  }
+  },
+  "kv_namespaces": [
+    { "binding": "REVIEWS", "id": "333cf73c07734448a2712033ee58781d" }
+  ]
 }
