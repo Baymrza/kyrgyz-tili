@@ -159,7 +159,7 @@
 .tsec--places{background:var(--paper)}
 .places{display:flex;flex-direction:column;gap:clamp(2.6rem,6vw,4.8rem)}
 .place{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.4rem,3.5vw,3rem);align-items:center}
-.place:nth-child(even) .place__media{order:2}
+.place.is-flip .place__media{order:2}
 
 .place__media{
   position:relative;aspect-ratio:4/3;max-width:100%;overflow:hidden;border-radius:14px;
@@ -192,10 +192,40 @@
 
 @media (max-width:820px){
   .place{grid-template-columns:1fr;gap:1.3rem}
-  .place:nth-child(even) .place__media{order:0}
+  .place.is-flip .place__media{order:0}
   .place__facts{gap:1.2rem}
 }
 
 /* в чётных блоках фото уезжает вправо — колонки меняем местами, чтобы снимок оставался крупным */
-.place:nth-child(even){grid-template-columns:.95fr 1.05fr}
-@media (max-width:820px){.place:nth-child(even){grid-template-columns:1fr}}
+.place.is-flip{grid-template-columns:.95fr 1.05fr}
+@media (max-width:820px){.place.is-flip{grid-template-columns:1fr}}
+
+/* ============================================================
+   КНОПКИ-ОБЛАСТИ
+   ============================================================ */
+.regions{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:clamp(2rem,4vw,3rem)}
+.reg{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.55rem 1.05rem;border-radius:999px;
+  border:1px solid var(--line);background:var(--white);color:var(--ink);
+  font-size:.78rem;font-weight:600;letter-spacing:.03em;transition:.25s;
+}
+.reg:hover{border-color:var(--bordo);color:var(--bordo);transform:translateY(-1px)}
+.reg:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.reg__c{
+  min-width:1.35rem;padding:0 .3rem;border-radius:999px;
+  background:rgba(27,19,16,.08);color:var(--ink-3);
+  font-size:.66rem;font-weight:700;text-align:center;font-variant-numeric:tabular-nums;
+}
+.reg.is-on{background:var(--bordo);border-color:var(--bordo);color:#fff}
+.reg.is-on .reg__c{background:rgba(255,255,255,.22);color:#fff}
+
+/* метка области на фотографии */
+.place__reg{
+  position:absolute;z-index:3;top:.85rem;left:.85rem;
+  padding:.3rem .75rem;border-radius:999px;
+  background:rgba(13,10,9,.55);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.28);
+  color:#fff;font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+}
+.place__facts b span{font-size:.75em;opacity:.75;font-family:var(--ff-b);font-weight:500}
