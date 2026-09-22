@@ -436,18 +436,6 @@
         { v: ['Көлөкө жок', 'Нет тени', 'No shade'], l: ['суу алыңыз', 'берите воду', 'bring water'] }
       ]
     },
-    {
-      id: 'laglan', reg: 'chuy', img: 'laglan.jpg', soon: true,
-      season: ['Жакында', 'Скоро', 'Coming soon'],
-      name: 'Лаглан',
-      sub: ['Сүрөт жана маалымат даярдалууда', 'Фото, видео и описание готовятся', 'Photo, video and description are on the way'],
-      txt: [
-        'Бул жерди кийинки кезекте кошобуз: сүрөттөр жана аңгеме даярдалып жатат. Бир аздан кийин кайрылып көрүңүз.',
-        'Это место мы добавим следующим: снимки и рассказ о нём готовятся. Загляните сюда чуть позже.',
-        'This place is next in line: the photographs and the story are being prepared. Look in again a little later.'
-      ],
-      f: []
-    },
 
     /* ---------------- ЫСЫК-КӨЛ ---------------- */
     {
@@ -496,6 +484,22 @@
         { v: '1–2', u: ['с', 'ч', 'h'], l: ['кароого жетет', 'хватит на осмотр', 'is enough to see it'] },
         { v: ['Кеч', 'Закат', 'Sunset'], l: ['эң жакшы жарык', 'лучший свет', 'the best light'] },
         { v: ['Тосор', 'Тосор', 'Tosor'], l: ['жакынкы айыл', 'ближайшее село', 'the nearest village'] }
+      ]
+    },
+    {
+      id: 'kyrchyn', reg: 'issyk', img: 'kyrchyn.jpg',
+      season: ['Жайында, өзгөчө Дүйнөлүк көчмөндөр оюндарында', 'Летом, особенно во время Всемирных игр кочевников', 'Summer, especially during the World Nomad Games'],
+      name: 'Кырчын жайлоосу',
+      sub: ['Көчмөндөр ааламы этногородогу, Ысык-Көлдүн түндүгү', 'Этногородок «Вселенная кочевников», север Иссык-Куля', 'The “Universe of Nomads” ethno-town, northern shore of Issyk-Kul'],
+      txt: [
+        'Ала-Тоонун этегиндеги кең жайлоо, Дүйнөлүк көчмөндөр оюндарынын башкы аянтчасы. Бул жерде дасторкон, оймо-чийме жана акындардын төкмө ырлары бир жерге чогулат, ат чабыш менен көк бөрү өтөт. Балчыктан курулган этногородокто боз үйлөр менен заманбап капсула үйлөр катар турат. Оюндардан тышкары да жайлоо жашайт: малчылар малын жаят, ал эми конокторго боз үйдө түнөп кетүү сунушталат.',
+        'Просторное джайлоо у подножия Ала-Тоо, главная площадка Всемирных игр кочевников. Здесь сходятся вместе ремёсла, национальная кухня и импровизационная поэзия акынов, проходят конные скачки и кок-бору. В глинобитном этногородке юрты стоят рядом с современными капсульными домиками. Джайлоо живёт и без Игр: скот пасут круглое лето, а гостям предлагают переночевать в юрте.',
+        'A wide summer pasture at the foot of the Ala-Too range, the main venue of the World Nomad Games. Crafts, national cuisine and the improvised poetry of akyns all come together here, alongside horse racing and kok-boru. In the clay-walled ethno-town, yurts stand next to modern capsule cabins. The jailoo lives on outside the Games too: herders graze their animals all summer, and guests can spend the night in a yurt.'
+      ],
+      f: [
+        { v: ['Оюндар', 'Игры', 'Games'], l: ['негизги аянтча', 'главная площадка', 'the main venue'] },
+        { v: ['Боз үй', 'Юрта', 'A yurt'], l: ['түнөп чыгууга болот', 'можно переночевать', 'you can stay overnight'] },
+        { v: ['Ала-Тоо', 'Ала-Тоо', 'Ala-Too'], l: ['тоо кыркасынын этегинде', 'у подножия хребта', 'at the foot of the range'] }
       ]
     },
 
@@ -650,6 +654,23 @@
         { v: ['Май', 'Май', 'May'], l: ['сезон башталат', 'начало сезона', 'the season starts'] }
       ]
     },
+    {
+      id: 'laglan', reg: 'osh', img: 'laglan.jpg',
+      season: ['Жаз жана күз, жашыл беткей менен кызыл аска карама-каршы турганда', 'Весна и осень, когда зелёный склон контрастирует с красной скалой', 'Spring and autumn, when the green slope sets off the red rock'],
+      name: 'Лаглан',
+      sub: ['Мады айыл аймагы, Кара-Суу району', 'Мадынский айыльный аймак, Кара-Сууский район', 'Madi rural district, Kara-Suu district'],
+      txt: [
+        'Ош областындагы Кара-Суу районунун тоо этегиндеги айыл жана анын жанындагы кызыл аска дубалдары. Катмар-катмар чегилген аскалар өрөөндүн үстүнөн мунара сыяктанып туруп, түбүндөгү жашыл жайыт менен кескин карама-каршылык жаратат. Бул жер али көпчүлүккө белгисиз — салттуу маршруттардын арасында эмес, ошондуктан тынч. Так маалымат аз болгондуктан, жол каралоочу же жергиликтүү жашоочудан сурап алганы оң.',
+        'Село у подножия гор в Кара-Суйском районе Ошской области и стена красных скальных каньонов рядом с ним. Слоистые обрывы стоят над долиной, как крепостные башни, и резко контрастируют с зелёными пастбищами у подножия. Место пока малоизвестное, не входит в привычные туристические маршруты — оттого и тихое. Точных данных о расстоянии и высоте немного, поэтому дорогу лучше уточнить у гида или у местных.',
+        'A village at the foot of the mountains in the Kara-Suu district of Osh region, beside a wall of red rock canyons. Layered cliffs rise above the valley like fortress towers, in sharp contrast with the green pasture below. The place is still little known and lies outside the usual tourist routes, which is exactly why it stays quiet. Reliable distance and altitude figures are scarce, so it is worth checking the road with a guide or a local before you go.'
+      ],
+      f: [
+        { v: ['Ош', 'Ош', 'Osh'], l: ['областы', 'область', 'region'] },
+        { v: ['Кара-Суу', 'Кара-Суу', 'Kara-Suu'], l: ['району', 'район', 'district'] },
+        { v: ['Тынч', 'Малолюдно', 'Uncrowded'], l: ['белгилүү маршрут эмес', 'не туристический маршрут', 'off the usual route'] }
+      ]
+    },
+
 
     /* ---------------- БАТКЕН ---------------- */
     {
