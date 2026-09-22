@@ -1083,9 +1083,9 @@
         return;
       }
       if (res.status === 429) {
-        rvSetStatus(t('Бир аз аста — кайра аракет кылыңыз.',
-                      'Чуть помедленнее — попробуйте ещё раз через полминуты.',
-                      'A little slower — try again in half a minute.'), 'bad');
+        rvSetStatus(t('Бир аз аста — бир мүнөттөн кийин кайра аракет кылыңыз.',
+                      'Чуть помедленнее — попробуйте ещё раз через минуту.',
+                      'A little slower — try again in a minute.'), 'bad');
         return;
       }
       if (!res.ok) throw new Error(String(res.status));

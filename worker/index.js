@@ -59,7 +59,7 @@ const REVIEW_TEXT_MAX  = 500;
 const REVIEW_NAME_MAX  = 60;
 const REVIEW_PHOTO_MAX = 300 * 1024;   // ~300 КБ на строку data:URL
 const REVIEW_LIST_MAX  = 60;
-const THROTTLE_SECONDS = 25;           // не чаще одного отзыва раз в 25 секунд с одного IP
+const THROTTLE_SECONDS = 60;           // не чаще одного отзыва в минуту с одного IP (60 — минимум для KV TTL)
 
 function reviewKey(ts, rand) {
   const inv = String(9999999999999 - ts).padStart(13, '0');
