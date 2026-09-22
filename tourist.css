@@ -159,20 +159,54 @@
 .tsec--places{background:var(--paper)}
 .places{display:flex;flex-direction:column;gap:clamp(2.6rem,6vw,4.8rem)}
 .place{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.4rem,3.5vw,3rem);align-items:center}
-.place.is-flip .place__media{order:2}
+.place.is-flip .gal{order:2}
 
-.place__media{
+/* ---------- галерея: несколько фото/видео на одну локацию ---------- */
+.gal{
   position:relative;aspect-ratio:4/3;max-width:100%;overflow:hidden;border-radius:14px;
   background:linear-gradient(150deg,var(--bordo),var(--bordo-d) 65%,#2a0d10);
   box-shadow:0 22px 50px rgba(27,19,16,.18);
 }
-.place__media::before{content:"";position:absolute;inset:0;z-index:1;opacity:.22;
+.gal__track{
+  position:absolute;inset:0;display:flex;height:100%;
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-behavior:smooth;
+}
+.gal__track::-webkit-scrollbar{display:none}
+.gal__slide{position:relative;flex:0 0 100%;width:100%;height:100%;scroll-snap-align:start;scroll-snap-stop:always}
+.gal__slide img,.gal__slide video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gal__ph{position:relative;flex:0 0 100%;width:100%;height:100%;display:grid;place-items:center}
+.gal__ph::before{content:"";position:absolute;inset:0;opacity:.22;
   background:url("assets/img/ornament-flat.jpg") center/cover}
-.place__ph{position:absolute;inset:0;z-index:1;display:grid;place-items:center}
-.place__ph svg{width:38%;height:auto;color:rgba(255,255,255,.4)}
-.place__media img,.place__media video{position:absolute;inset:0;z-index:2;
-  width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
-.place:hover .place__media img{transform:scale(1.04)}
+.gal__ph svg{position:relative;width:38%;height:auto;color:rgba(255,255,255,.4)}
+.place:hover .gal__slide img{transform:scale(1.035)}
+.gal__slide img{transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+
+.gal__dots{position:absolute;left:0;right:0;bottom:.75rem;z-index:4;
+  display:flex;gap:.4rem;justify-content:center;pointer-events:none}
+.gal__dot{width:6px;height:6px;border-radius:50%;border:0;padding:0;
+  background:rgba(255,255,255,.5);box-shadow:0 1px 3px rgba(0,0,0,.35);
+  pointer-events:auto;cursor:pointer;transition:transform .25s,background .25s}
+.gal__dot.is-on{background:#fff;transform:scale(1.4)}
+
+.gal__arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:4;
+  width:34px;height:34px;border-radius:50%;border:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(13,10,9,.42);backdrop-filter:blur(4px);color:#fff;font-size:1.15rem;line-height:1;
+  opacity:0;transition:opacity .25s,background .25s;
+}
+.gal:hover .gal__arrow{opacity:.92}
+.gal__arrow:hover{background:rgba(13,10,9,.68)}
+.gal__arrow--prev{left:.6rem}
+.gal__arrow--next{right:.6rem}
+.gal__arrow[hidden],.gal__dots:empty{display:none}
+@media (hover:none){ .gal__arrow{opacity:.85} }
+
+.gal__count{
+  position:absolute;top:.8rem;right:.8rem;z-index:5;
+  padding:.22rem .55rem;border-radius:999px;background:rgba(13,10,9,.48);backdrop-filter:blur(4px);
+  color:#fff;font-size:.64rem;font-weight:700;letter-spacing:.03em;font-variant-numeric:tabular-nums;
+}
 
 .place__body{min-width:0}
 .place__season{display:inline-block;margin:0 0 .9rem;padding:.35rem .95rem;border-radius:999px;
@@ -188,11 +222,11 @@
   font-variant-numeric:tabular-nums}
 .place__facts span{font-size:.7rem;color:var(--ink-3);letter-spacing:.03em}
 .place--soon .place__season{background:rgba(27,19,16,.07);color:var(--ink-3)}
-.place--soon .place__media{filter:saturate(.7)}
+.place--soon .gal{filter:saturate(.7)}
 
 @media (max-width:820px){
   .place{grid-template-columns:1fr;gap:1.3rem}
-  .place.is-flip .place__media{order:0}
+  .place.is-flip .gal{order:0}
   .place__facts{gap:1.2rem}
 }
 
@@ -222,7 +256,7 @@
 
 /* метка области на фотографии */
 .place__reg{
-  position:absolute;z-index:3;top:.85rem;left:.85rem;
+  position:absolute;z-index:5;top:.85rem;left:.85rem;
   padding:.3rem .75rem;border-radius:999px;
   background:rgba(13,10,9,.55);backdrop-filter:blur(6px);
   border:1px solid rgba(255,255,255,.28);

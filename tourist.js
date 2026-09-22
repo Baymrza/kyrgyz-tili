@@ -375,7 +375,7 @@
 
     /* ---------------- ЧҮЙ ---------------- */
     {
-      id: 'birch', reg: 'chuy', img: 'birch.jpg',
+      id: 'birch', reg: 'chuy', media: ['birch-1.jpg','birch-2.jpg','birch-3.jpg'],
       season: ['Сентябрдын ортосунан октябрдын аягына чейин', 'С середины сентября до конца октября', 'Mid-September to late October'],
       name: 'Кайың токой',
       sub: ['Бойрок урочищеси, Кашка-Суу тарап', 'Берёзовая роща, урочище Бойрок', 'The birch grove, Boyrok'],
@@ -391,7 +391,7 @@
       ]
     },
     {
-      id: 'koltor', reg: 'chuy', img: 'koltor.jpg',
+      id: 'koltor', reg: 'chuy', media: ['koltor-1.jpg'],
       season: ['Жайында — жөө сапар, кышында — коньки', 'Летом — поход, зимой — коньки', 'A hike in summer, skates in winter'],
       name: 'Көл-Тор',
       sub: ['Кегети капчыгайы', 'Озеро Кол-Тор, ущелье Кегети', 'Lake Kol-Tor, Kegeti gorge'],
@@ -407,7 +407,7 @@
       ]
     },
     {
-      id: 'flooded', reg: 'chuy', img: 'flooded.jpg',
+      id: 'flooded', reg: 'chuy', media: ['flooded-1.jpg','flooded-2.jpg'],
       season: ['Жаз мезгилинде гана, бир айга жакын', 'Только весной, окно около месяца', 'Spring only, a window of about a month'],
       name: 'Суу баскан токой',
       sub: ['Ала-Арча суу сактагычы', 'Затопленный лес, Ала-Арчинское водохранилище', 'The flooded forest, Ala-Archa reservoir'],
@@ -423,7 +423,7 @@
       ]
     },
     {
-      id: 'konorchok', reg: 'chuy', img: 'konorchok.jpg',
+      id: 'konorchok', reg: 'chuy', media: ['konorchok-1.jpg'],
       season: ['Апрель — октябрь, эрте эртең менен', 'Апрель — октябрь, лучше рано утром', 'April to October, best early in the morning'],
       name: 'Коңорчок каньондору',
       sub: ['Боом капчыгайы, Ысык-Көл жолунда', 'Каньоны Конорчок, Боомское ущелье', 'Konorchok canyons, Boom gorge'],
@@ -441,7 +441,7 @@
 
     /* ---------------- ЫСЫК-КӨЛ ---------------- */
     {
-      id: 'alakul', reg: 'issyk', img: 'alakul.jpg',
+      id: 'alakul', reg: 'issyk', media: ['alakul-1.jpg'],
       season: ['Июль — сентябрь', 'Июль — сентябрь', 'July to September'],
       name: 'Ала-Көл',
       sub: ['3560 метр бийиктиктеги көл, Каракол', 'Озеро на 3560 м, Каракол', 'A lake at 3,560 m, Karakol'],
@@ -457,7 +457,7 @@
       ]
     },
     {
-      id: 'arashan', reg: 'issyk', img: 'arashan.jpg',
+      id: 'arashan', reg: 'issyk', media: ['arashan-1.jpg','arashan-2.jpg','arashan-3.jpg'],
       season: ['Жыл бою, жайында жеңил', 'Круглый год, летом проще', 'All year, easier in summer'],
       name: 'Алтын-Арашан',
       sub: ['Ысык булактуу капчыгай, Каракол', 'Горячие источники в ущелье, Каракол', 'Hot springs in a gorge, Karakol'],
@@ -473,7 +473,7 @@
       ]
     },
     {
-      id: 'skazka', reg: 'issyk', img: 'skazka.jpg',
+      id: 'skazka', reg: 'issyk', media: ['skazka-1.jpg','skazka-2.jpg'],
       season: ['Жыл бою, эң жакшысы — күн батканда', 'Круглый год, лучше всего на закате', 'All year round, best at sunset'],
       name: '«Жомок» каньону',
       sub: ['Ысык-Көлдүн түштүк жээги, Тосор', 'Каньон Сказка, южный берег Иссык-Куля', 'Skazka canyon, southern shore of Issyk-Kul'],
@@ -489,7 +489,7 @@
       ]
     },
     {
-      id: 'kyrchyn', reg: 'issyk', img: 'kyrchyn.jpg',
+      id: 'kyrchyn', reg: 'issyk', media: ['kyrchyn-1.jpg','kyrchyn-2.jpg','kyrchyn-3.jpg','kyrchyn-1.mp4'],
       season: ['Жайында, өзгөчө Дүйнөлүк көчмөндөр оюндарында', 'Летом, особенно во время Всемирных игр кочевников', 'Summer, especially during the World Nomad Games'],
       name: 'Кырчын жайлоосу',
       sub: ['Көчмөндөр ааламы этногородогу, Ысык-Көлдүн түндүгү', 'Этногородок «Вселенная кочевников», север Иссык-Куля', 'The “Universe of Nomads” ethno-town, northern shore of Issyk-Kul'],
@@ -507,7 +507,7 @@
 
     /* ---------------- НАРЫН ---------------- */
     {
-      id: 'sonkul', reg: 'naryn', img: 'sonkul.jpg',
+      id: 'sonkul', reg: 'naryn', media: ['sonkul-1.jpg','sonkul-2.jpg'],
       season: ['Июнь — сентябрь', 'Июнь — сентябрь', 'June to September'],
       name: 'Соң-Көл',
       sub: ['3016 метрдеги көл жана жайлоо', 'Озеро-джайлоо на 3016 м', 'A lake and summer pasture at 3,016 m'],
@@ -523,7 +523,7 @@
       ]
     },
     {
-      id: 'kelsuu', reg: 'naryn', img: 'kelsuu.jpg',
+      id: 'kelsuu', reg: 'naryn', media: ['kelsuu-1.jpg','kelsuu-2.jpg','kelsuu-1.mp4','kelsuu-2.mp4'],
       season: ['Июнь — сентябрь · чек ара уруксаты керек', 'Июнь — сентябрь · нужен погранпропуск', 'June to September · border permit required'],
       name: 'Көл-Суу',
       sub: ['Ак-Сай өрөөнү, Ат-Башы району', 'Ак-Сайская долина, Ат-Башинский район', 'Ak-Sai valley, At-Bashy district'],
@@ -539,7 +539,7 @@
       ]
     },
     {
-      id: 'kyzyl-asker', reg: 'naryn', img: 'kyzyl-asker.jpg',
+      id: 'kyzyl-asker', reg: 'naryn', media: ['kyzyl-asker-1.jpg','kyzyl-asker-2.jpg'],
       season: ['Экспедиция, июль — август', 'Экспедиция, июль — август', 'An expedition, July to August'],
       name: 'Кызыл-Аскер мөңгүсү',
       sub: ['Кокшаал-Тоо кырка тоосу', 'Хребет Кокшаал-Тоо, Нарынская область', 'Kokshaal-Too range, Naryn region'],
@@ -557,7 +557,7 @@
 
     /* ---------------- ТАЛАС ---------------- */
     {
-      id: 'beshtash', reg: 'talas', img: 'beshtash.jpg',
+      id: 'beshtash', reg: 'talas', media: ['beshtash-1.jpg','beshtash-2.jpg'],
       season: ['Май — октябрь', 'Май — октябрь', 'May to October'],
       name: 'Беш-Таш',
       sub: ['Улуттук парк, Талас өрөөнү', 'Национальный парк, Таласская долина', 'National park, Talas valley'],
@@ -573,7 +573,7 @@
       ]
     },
     {
-      id: 'kirov', reg: 'talas', img: 'kirov.jpg',
+      id: 'kirov', reg: 'talas', media: ['kirov-1.jpg','kirov-2.jpg'],
       season: ['Жай айлары', 'Летом', 'Summer'],
       name: 'Киров суу сактагычы',
       sub: ['Чоң-Капка капчыгайы, Талас', 'Ущелье Чон-Капка, Талас', 'Chon-Kapka gorge, Talas'],
@@ -591,7 +591,7 @@
 
     /* ---------------- ЖАЛАЛ-АБАД ---------------- */
     {
-      id: 'sarychelek', reg: 'jalal', img: 'sarychelek.jpg',
+      id: 'sarychelek', reg: 'jalal', media: ['sarychelek-1.jpg','sarychelek-2.jpg'],
       season: ['Июнь — октябрь', 'Июнь — октябрь', 'June to October'],
       name: 'Сары-Челек',
       sub: ['ЮНЕСКОнун биосфералык коругу', 'Биосферный заповедник ЮНЕСКО', 'A UNESCO biosphere reserve'],
@@ -607,7 +607,7 @@
       ]
     },
     {
-      id: 'arslanbob', reg: 'jalal', img: 'arslanbob.jpg',
+      id: 'arslanbob', reg: 'jalal', media: ['arslanbob-1.jpg'],
       season: ['Сентябрь — октябрь, жаңгак терүү', 'Сентябрь — октябрь, сбор ореха', 'September to October, the walnut harvest'],
       name: 'Арсланбоб',
       sub: ['Дүйнөдөгү эң чоң реликт жаңгак токою', 'Крупнейший в мире реликтовый ореховый лес', 'The largest relict walnut forest in the world'],
@@ -625,7 +625,7 @@
 
     /* ---------------- ОШ ---------------- */
     {
-      id: 'lenin', reg: 'osh', img: 'lenin.jpg',
+      id: 'lenin', reg: 'osh', media: ['lenin-1.jpg','lenin-2.jpg'],
       season: ['Июль — август', 'Июль — август', 'July to August'],
       name: 'Тулпар-Көл жана Ленин чокусу',
       sub: ['Алай өрөөнү, Ачык-Таш базалык лагери', 'Алайская долина, лагерь Ачик-Таш', 'Alai valley, Achik-Tash base camp'],
@@ -641,7 +641,7 @@
       ]
     },
     {
-      id: 'abshyr', reg: 'osh', img: 'abshyr.jpg',
+      id: 'abshyr', reg: 'osh', media: ['abshyr-1.jpg','abshyr-2.jpg'],
       season: ['Май — сентябрь', 'Май — сентябрь', 'May to September'],
       name: 'Абшыр-Сай',
       sub: ['Аскадан атылып чыккан шаркыратма', 'Водопад, бьющий прямо из скалы', 'A waterfall bursting out of a cliff'],
@@ -657,7 +657,7 @@
       ]
     },
     {
-      id: 'laglan', reg: 'osh', img: 'laglan.jpg',
+      id: 'laglan', reg: 'osh', media: ['laglan-1.jpg'],
       season: ['Жаз жана күз, жашыл беткей менен кызыл аска карама-каршы турганда', 'Весна и осень, когда зелёный склон контрастирует с красной скалой', 'Spring and autumn, when the green slope sets off the red rock'],
       name: 'Лаглан',
       sub: ['Мады айыл аймагы, Кара-Суу району', 'Мадынский айыльный аймак, Кара-Сууский район', 'Madi rural district, Kara-Suu district'],
@@ -676,7 +676,7 @@
 
     /* ---------------- БАТКЕН ---------------- */
     {
-      id: 'karavshin', reg: 'batken', img: 'karavshin.jpg',
+      id: 'karavshin', reg: 'batken', media: ['karavshin-1.jpg','karavshin-2.jpg','karavshin-3.jpg'],
       season: ['Июль — август · чек араны тактаңыз', 'Июль — август · уточните обстановку на границе', 'July to August · check the border situation'],
       name: 'Каравшин',
       sub: ['Ак-Суу жана Сабах аскалары, Лайлак району', 'Стены Ак-Суу и Сабах, Ляйлякский район', 'The Ak-Suu and Sabah walls, Lailak district'],
@@ -692,7 +692,7 @@
       ]
     },
     {
-      id: 'aigul', reg: 'batken', img: 'aigul.jpg',
+      id: 'aigul', reg: 'batken', media: ['aigul-1.jpg','aigul-2.jpg'],
       season: ['Апрель — май, гүлдөгөндө', 'Апрель — май, пока цветёт', 'April to May, while it blooms'],
       name: 'Айгүл-Таш',
       sub: ['Айгүл гүлүнүн тоосу, Баткенден 19 км', 'Гора цветка айгуль, 19 км от Баткена', 'The mountain of the aigul flower, 19 km from Batken'],
@@ -751,9 +751,13 @@
         '</b><span>' + pick(f.l) + '</span></li>').join('');
 
       card.innerHTML =
-        '<div class="place__media">' +
-          '<span class="place__ph"><svg viewBox="0 0 300 300"><use href="#orn-big"/></svg></span>' +
+        '<div class="gal">' +
+          '<div class="gal__track"></div>' +
           '<span class="place__reg"></span>' +
+          '<span class="gal__count" hidden></span>' +
+          '<button class="gal__arrow gal__arrow--prev" type="button" hidden>‹</button>' +
+          '<button class="gal__arrow gal__arrow--next" type="button" hidden>›</button>' +
+          '<div class="gal__dots"></div>' +
         '</div>' +
         '<div class="place__body">' +
           '<p class="place__season"></p>' +
@@ -768,56 +772,133 @@
       $('.place__name', card).textContent   = p.name;
       $('.place__name2', card).textContent  = pick(p.sub);
       $('.place__txt', card).textContent    = pick(p.txt);
+      $('.gal__arrow--prev', card).setAttribute('aria-label', t('Мурунку', 'Предыдущее', 'Previous'));
+      $('.gal__arrow--next', card).setAttribute('aria-label', t('Кийинки', 'Следующее', 'Next'));
 
       box.appendChild(card);
-      loadMedia(card, p);
+      buildGallery(card, p);
     });
   }
 
-  /* фото и видео подставляются, если файл лежит в assets/places.
-     Результат проверки запоминаем, чтобы при смене языка не дёргать сервер заново. */
+  /* ============================================================
+     ГАЛЕРЕЯ: несколько фото/видео на одну локацию, с прокруткой,
+     точками и стрелками. Файл подставляется, только если он реально
+     существует в assets/places — иначе тихо пропускается.
+     Результат проверки запоминаем, чтобы при смене языка не дёргать
+     сеть заново.
+     ============================================================ */
   const mediaSeen = {};   // src -> true (есть) / false (нет)
 
-  function loadMedia(card, p) {
-    const media = $('.place__media', card);
-    if (!media || !p.img) return;
-    const base = 'assets/places/';
-    const imgSrc = base + p.img;
-    const vidSrc = base + p.img.replace(/\.[a-z0-9]+$/i, '.mp4');
+  function probeFile(src) {
+    if (mediaSeen[src] !== undefined) return Promise.resolve(mediaSeen[src]);
+    const isVideo = /\.mp4$/i.test(src);
+    return new Promise(resolve => {
+      if (isVideo) {
+        const v = document.createElement('video');
+        v.muted = true; v.preload = 'metadata';
+        v.addEventListener('loadedmetadata', () => { mediaSeen[src] = true;  resolve(true);  }, { once: true });
+        v.addEventListener('error',          () => { mediaSeen[src] = false; resolve(false); }, { once: true });
+        v.src = src;
+      } else {
+        const img = new Image();
+        img.onload  = () => { mediaSeen[src] = true;  resolve(true);  };
+        img.onerror = () => { mediaSeen[src] = false; resolve(false); };
+        img.src = src;
+      }
+    });
+  }
 
-    const addImg = () => {
-      if ($('video', media) || $('img', media)) return;
-      const el = document.createElement('img');
-      el.src = imgSrc; el.alt = p.name; el.loading = 'lazy';
-      media.appendChild(el);
-    };
-    const addVid = () => {
-      if ($('video', media)) return;
-      const img = $('img', media);
-      if (img) img.remove();
-      const v = document.createElement('video');
-      v.muted = true; v.loop = true; v.playsInline = true;
-      v.setAttribute('playsinline', ''); v.preload = 'auto';
-      v.src = vidSrc;
-      media.appendChild(v);
-      v.play().catch(() => {});
-    };
+  async function buildGallery(card, p) {
+    const gal   = $('.gal', card);
+    const track = $('.gal__track', gal);
+    const files = (p.media || []).map(f => 'assets/places/' + f);
 
-    if (mediaSeen[imgSrc] === true) addImg();
-    else if (mediaSeen[imgSrc] === undefined) {
-      const probe = new Image();
-      probe.onload  = () => { mediaSeen[imgSrc] = true;  addImg(); };
-      probe.onerror = () => { mediaSeen[imgSrc] = false; };
-      probe.src = imgSrc;
+    const found = (await Promise.all(files.map(probeFile)))
+      .map((ok, i) => ok ? files[i] : null)
+      .filter(Boolean);
+
+    track.innerHTML = '';
+
+    if (!found.length) {
+      const ph = document.createElement('div');
+      ph.className = 'gal__ph';
+      ph.innerHTML = '<svg viewBox="0 0 300 300"><use href="#orn-big"/></svg>';
+      track.appendChild(ph);
+      return;
     }
 
-    if (mediaSeen[vidSrc] === true) addVid();
-    else if (mediaSeen[vidSrc] === undefined) {
-      const probe = document.createElement('video');
-      probe.muted = true; probe.preload = 'metadata';
-      probe.addEventListener('loadeddata', () => { mediaSeen[vidSrc] = true;  addVid(); }, { once: true });
-      probe.addEventListener('error',      () => { mediaSeen[vidSrc] = false; }, { once: true });
-      probe.src = vidSrc;
+    const slides = found.map(src => {
+      const slide = document.createElement('div');
+      slide.className = 'gal__slide';
+      if (/\.mp4$/i.test(src)) {
+        const v = document.createElement('video');
+        v.muted = true; v.loop = true; v.playsInline = true;
+        v.setAttribute('playsinline', ''); v.preload = 'metadata';
+        v.src = src;
+        slide.appendChild(v);
+      } else {
+        const img = document.createElement('img');
+        img.src = src; img.alt = p.name; img.loading = 'lazy';
+        slide.appendChild(img);
+      }
+      track.appendChild(slide);
+      return slide;
+    });
+
+    if (slides.length === 1) return;   // одна карточка — без точек, стрелок и счётчика
+
+    const dotsBox = $('.gal__dots', gal);
+    const prevBtn = $('.gal__arrow--prev', gal);
+    const nextBtn = $('.gal__arrow--next', gal);
+    const countEl = $('.gal__count', gal);
+
+    dotsBox.innerHTML = '';
+    const dots = slides.map((_, i) => {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'gal__dot' + (i === 0 ? ' is-on' : '');
+      d.setAttribute('aria-label', (i + 1) + ' / ' + slides.length);
+      d.addEventListener('click', () => {
+        slides[i].scrollIntoView({ block: 'nearest', inline: 'start', behavior: 'smooth' });
+      });
+      dotsBox.appendChild(d);
+      return d;
+    });
+
+    prevBtn.hidden = false;
+    nextBtn.hidden = false;
+    countEl.hidden = false;
+
+    let active = 0;
+    const setActive = i => {
+      active = i;
+      dots.forEach((d, j) => d.classList.toggle('is-on', j === i));
+      countEl.textContent = (i + 1) + ' / ' + slides.length;
+      slides.forEach((s, j) => {
+        const v = $('video', s);
+        if (!v) return;
+        if (j === i) v.play().catch(() => {});
+        else v.pause();
+      });
+    };
+    setActive(0);
+
+    prevBtn.addEventListener('click', () => {
+      slides[Math.max(0, active - 1)].scrollIntoView({ block: 'nearest', inline: 'start', behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      slides[Math.min(slides.length - 1, active + 1)].scrollIntoView({ block: 'nearest', inline: 'start', behavior: 'smooth' });
+    });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (en.isIntersecting && en.intersectionRatio > 0.6) {
+            setActive(slides.indexOf(en.target));
+          }
+        });
+      }, { root: track, threshold: [0.6] });
+      slides.forEach(s => io.observe(s));
     }
   }
 
