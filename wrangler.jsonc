@@ -1,5 +1,7 @@
 // Настройки Cloudflare.
-// Сайт раздаётся как статические файлы, а /api/translate обрабатывает Worker.
+// Сайт раздаётся как статические файлы, а /api/translate и /api/reviews
+// обрабатывает Worker. Для отзывов нужен KV-namespace "REVIEWS" — его ID
+// добавится сюда отдельной правкой, как только он будет создан в панели.
 {
   "name": "kyrgyz-tili",
   "compatibility_date": "2025-09-01",

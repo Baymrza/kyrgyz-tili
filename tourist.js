@@ -33,6 +33,8 @@
     renderPhrases();
     updateGoogleLink();
     updateMicState();
+    rvFillPlaceSelect();
+    rvRenderList();
   }
 
   $$('.lang__b').forEach(b => b.addEventListener('click', () => {
@@ -819,7 +821,314 @@
     }
   }
 
+  /* ============================================================
+     ОТЗЫВЫ ГОСТЕЙ
+     ============================================================ */
+  const RV_MAX_TEXT  = 500;
+  const RV_MAX_PHOTO = 300 * 1024;      // байт в base64-строке, с запасом под лимит сервера
+  const RV_ADMIN_KEY_STORE = 'kgt-admin-key';
+
+  let rvAdminKey = '';
+  try { rvAdminKey = localStorage.getItem(RV_ADMIN_KEY_STORE) || ''; } catch (e) {}
+  let rvPendingPhoto = '';   // сжатое фото в виде data:URL, ждёт отправки
+
+  function rvPlaceName(id) {
+    if (id === 'general' || !id) return t('Жалпы пикир', 'Общее впечатление', 'General impression');
+    const p = PLACES.filter(x => x.id === id)[0];
+    return p ? p.name : id;
+  }
+
+  function rvFillPlaceSelect() {
+    const sel = $('#rvPlace');
+    if (!sel) return;
+    const prev = sel.value;
+    sel.innerHTML = '';
+    const gOpt = document.createElement('option');
+    gOpt.value = 'general';
+    gOpt.textContent = t('Жалпы пикир', 'Общее впечатление', 'General impression');
+    sel.appendChild(gOpt);
+
+    REGIONS.filter(r => r.id !== 'all').forEach(r => {
+      const list = PLACES.filter(p => p.reg === r.id);
+      if (!list.length) return;
+      const grp = document.createElement('optgroup');
+      grp.label = t(r.kg, r.ru, r.en);
+      list.forEach(p => {
+        const o = document.createElement('option');
+        o.value = p.id; o.textContent = p.name;
+        grp.appendChild(o);
+      });
+      sel.appendChild(grp);
+    });
+
+    if (prev) sel.value = prev;
+  }
+
+  function rvUpdateCount() {
+    const ta = $('#rvText');
+    $('#rvCount').textContent = ta.value.length + ' / ' + RV_MAX_TEXT;
+  }
+
+  function rvSetStatus(msg, kind) {
+    const el = $('#rvStatus');
+    el.textContent = msg || '';
+    el.classList.remove('is-ok', 'is-bad');
+    if (kind) el.classList.add(kind === 'ok' ? 'is-ok' : 'is-bad');
+  }
+
+  /* сжимаем фото в браузере, чтобы не гонять по сети мегабайты */
+  function rvCompressPhoto(file) {
+    return new Promise((resolve, reject) => {
+      if (!/^image\//.test(file.type)) { reject(new Error('not-image')); return; }
+      const img = new Image();
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error('read-failed'));
+      reader.onload = () => {
+        img.onerror = () => reject(new Error('decode-failed'));
+        img.onload = () => {
+          const maxW = 900;
+          const scale = Math.min(1, maxW / img.width);
+          const w = Math.round(img.width * scale);
+          const h = Math.round(img.height * scale);
+          const canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+
+          let quality = 0.75;
+          let dataUrl = canvas.toDataURL('image/jpeg', quality);
+          while (dataUrl.length > RV_MAX_PHOTO && quality > 0.35) {
+            quality -= 0.1;
+            dataUrl = canvas.toDataURL('image/jpeg', quality);
+          }
+          if (dataUrl.length > RV_MAX_PHOTO) { reject(new Error('too-big')); return; }
+          resolve(dataUrl);
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  $('#rvPhoto').addEventListener('change', async () => {
+    const file = $('#rvPhoto').files[0];
+    if (!file) return;
+    rvSetStatus(t('Сүрөт кысылууда…', 'Сжимаю фото…', 'Compressing the photo…'));
+    try {
+      const dataUrl = await rvCompressPhoto(file);
+      rvPendingPhoto = dataUrl;
+      $('#rvPreview').src = dataUrl;
+      $('#rvPreview').hidden = false;
+      $('#rvPhotoName').textContent = file.name;
+      $('#rvPhotoClear').hidden = false;
+      rvSetStatus('');
+    } catch (e) {
+      rvPendingPhoto = '';
+      $('#rvPhoto').value = '';
+      rvSetStatus(t('Бул сүрөттү кысуу мүмкүн болбоду, башкасын тандаңыз.',
+                    'Не удалось обработать это фото, выберите другое.',
+                    'Could not process this photo — please choose another.'), 'bad');
+    }
+  });
+
+  $('#rvPhotoClear').addEventListener('click', () => {
+    rvPendingPhoto = '';
+    $('#rvPhoto').value = '';
+    $('#rvPreview').hidden = true;
+    $('#rvPreview').src = '';
+    $('#rvPhotoName').textContent = '';
+    $('#rvPhotoClear').hidden = true;
+  });
+
+  $('#rvText').addEventListener('input', rvUpdateCount);
+
+  function rvDate(ts) {
+    try {
+      return new Date(ts).toLocaleString(
+        lang === 'kg' ? 'ru-RU' : (lang === 'ru' ? 'ru-RU' : 'en-GB'),
+        { day: '2-digit', month: '2-digit', year: 'numeric' }
+      );
+    } catch (e) { return ''; }
+  }
+
+  function rvCard(r) {
+    const card = document.createElement('article');
+    card.className = 'rv' + (r.hidden ? ' is-hidden' : '');
+
+    if (r.photo) {
+      const img = document.createElement('img');
+      img.className = 'rv__photo'; img.src = r.photo; img.alt = '';
+      card.appendChild(img);
+    }
+
+    const body = document.createElement('div');
+    body.className = 'rv__body';
+
+    const head = document.createElement('div');
+    head.className = 'rv__head';
+    const name = document.createElement('span');
+    name.className = 'rv__name';
+    name.textContent = r.name || t('Аты жок конок', 'Гость без имени', 'A guest');
+    const place = document.createElement('span');
+    place.className = 'rv__place';
+    place.textContent = rvPlaceName(r.place);
+    const date = document.createElement('span');
+    date.className = 'rv__date';
+    date.textContent = rvDate(r.ts);
+    head.appendChild(name); head.appendChild(place); head.appendChild(date);
+
+    const text = document.createElement('p');
+    text.className = 'rv__text';
+    text.textContent = r.text;
+
+    body.appendChild(head);
+    body.appendChild(text);
+
+    if (rvAdminKey) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'rv__hideBtn' + (r.hidden ? ' is-restore' : '');
+      btn.textContent = r.hidden
+        ? t('Кайра көрсөтүү', 'Вернуть', 'Restore')
+        : t('Жашыруу', 'Скрыть', 'Hide');
+      btn.addEventListener('click', () => rvToggleHide(r.id, !r.hidden));
+      body.appendChild(btn);
+    }
+
+    card.appendChild(body);
+    return card;
+  }
+
+  async function rvToggleHide(id, hidden) {
+    try {
+      const res = await fetch('/api/reviews/' + id + '/' + (hidden ? 'hide' : 'unhide'), {
+        method: 'POST',
+        headers: { 'x-admin-key': rvAdminKey }
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      rvLoadList();
+    } catch (e) {
+      rvSetStatus(t('Аракет ишке ашкан жок.', 'Действие не выполнено.', 'The action failed.'), 'bad');
+    }
+  }
+
+  let rvCache = [];
+
+  async function rvLoadList() {
+    const list = $('#rvList');
+    try {
+      const res = await fetch('/api/reviews', { headers: rvAdminKey ? { 'x-admin-key': rvAdminKey } : {} });
+      if (res.status === 503) {
+        list.innerHTML = '';
+        $('#rvEmpty').hidden = false;
+        $('#rvEmpty').textContent = t(
+          'Пикир китепчеси азырынча даярдалып жатат — бир аздан кийин кайрылып көрүңүз.',
+          'Раздел отзывов пока настраивается — загляните чуть позже.',
+          'The review board is still being set up — please check back soon.');
+        return;
+      }
+      const data = await res.json();
+      rvCache = data.reviews || [];
+      rvRenderList();
+    } catch (e) {
+      list.innerHTML = '';
+      $('#rvEmpty').hidden = false;
+      $('#rvEmpty').textContent = t('Пикирлерди жүктөө мүмкүн болбоду.',
+                                     'Не удалось загрузить отзывы.',
+                                     'Could not load the reviews.');
+    }
+  }
+
+  function rvRenderList() {
+    const list = $('#rvList');
+    list.innerHTML = '';
+    if (!rvCache.length) {
+      $('#rvEmpty').hidden = false;
+      $('#rvEmpty').textContent = t('Азырынча пикир жок — биринчи болуңуз.',
+                                     'Пока отзывов нет — станьте первым.',
+                                     'No reviews yet — be the first.');
+      return;
+    }
+    $('#rvEmpty').hidden = true;
+    rvCache.forEach(r => list.appendChild(rvCard(r)));
+  }
+
+  $('#rvForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const text = $('#rvText').value.trim();
+    if (!text) {
+      rvSetStatus(t('Пикириңизди жазыңыз.', 'Напишите текст отзыва.', 'Please write your review.'), 'bad');
+      return;
+    }
+    const btn = $('#rvSubmit');
+    btn.disabled = true;
+    rvSetStatus(t('Жөнөтүлүүдө…', 'Отправляю…', 'Sending…'));
+
+    try {
+      const res = await fetch('/api/reviews', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          name: $('#rvName').value.trim(),
+          place: $('#rvPlace').value,
+          text: text,
+          photo: rvPendingPhoto || null,
+          website: $('#rvWebsite').value   // honeypot — у людей всегда пусто
+        })
+      });
+
+      if (res.status === 503) {
+        rvSetStatus(t('Пикир китепчеси азырынча даярдалып жатат.',
+                      'Раздел отзывов пока настраивается.',
+                      'The review board is still being set up.'), 'bad');
+        return;
+      }
+      if (res.status === 429) {
+        rvSetStatus(t('Бир аз аста — кайра аракет кылыңыз.',
+                      'Чуть помедленнее — попробуйте ещё раз через полминуты.',
+                      'A little slower — try again in half a minute.'), 'bad');
+        return;
+      }
+      if (!res.ok) throw new Error(String(res.status));
+
+      $('#rvForm').reset();
+      rvPendingPhoto = '';
+      $('#rvPreview').hidden = true;
+      $('#rvPhotoName').textContent = '';
+      $('#rvPhotoClear').hidden = true;
+      rvUpdateCount();
+      rvFillPlaceSelect();
+      rvSetStatus(t('Рахмат! Пикириңиз жарыяланды.', 'Спасибо! Ваш отзыв опубликован.', 'Thank you! Your review is live.'), 'ok');
+      rvLoadList();
+    } catch (e) {
+      rvSetStatus(t('Жөнөтүү ишке ашкан жок, кайра аракет кылыңыз.',
+                    'Не удалось отправить, попробуйте ещё раз.',
+                    'Sending failed — please try again.'), 'bad');
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  $('#rvAdminBtn').addEventListener('click', () => {
+    if (rvAdminKey) {
+      rvAdminKey = '';
+      try { localStorage.removeItem(RV_ADMIN_KEY_STORE); } catch (e) {}
+      $('#rvAdminBtn').classList.remove('is-on');
+      rvLoadList();
+      return;
+    }
+    const val = window.prompt(t('Модератор ачкычы:', 'Ключ модератора:', 'Moderator key:'));
+    if (!val) return;
+    rvAdminKey = val.trim();
+    try { localStorage.setItem(RV_ADMIN_KEY_STORE, rvAdminKey); } catch (e) {}
+    $('#rvAdminBtn').classList.add('is-on');
+    rvLoadList();
+  });
+
+  if (rvAdminKey) $('#rvAdminBtn').classList.add('is-on');
+
   /* ---------- старт ---------- */
   updateCount();
+  rvUpdateCount();
   applyLang();
+  rvLoadList();
 })();

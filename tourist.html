@@ -71,6 +71,7 @@
       <a href="#places"     data-ru="Куда поехать"  data-en="Where to go">Кайда баруу керек</a>
       <a href="#phrases"    data-ru="Что сказать"   data-en="What to say">Эмне деп айтуу керек</a>
       <a href="#translator" data-ru="Переводчик"    data-en="Translator">Котормочу</a>
+      <a href="#reviews"    data-ru="Впечатления"   data-en="Reviews">Таасирлер</a>
     </nav>
 
     <p class="thero__proverb">«Конок келсе, кут келет»</p>
@@ -169,6 +170,68 @@
     </div>
   </div>
 </section>
+
+<!-- ================= ОТЗЫВЫ ГОСТЕЙ ================= -->
+<section class="tsec tsec--reviews" id="reviews">
+  <div class="sec__texture" style="background-image:url('assets/img/pattern-line.jpg')"></div>
+  <div class="wrap wrap--narrow">
+    <h2 class="tsec__title" data-ru="Впечатления гостей" data-en="Guest impressions">Коноктордун таасирлери</h2>
+    <p class="tsec__sub"
+       data-ru="Поделитесь, что вам запомнилось. Отзыв виден сразу всем — пишите так, как сказали бы другу."
+       data-en="Share what stayed with you. Your note appears right away for everyone — write as you would to a friend.">
+      Эсиңизде эмне калганын бөлүшүңүз. Пикир дароо баарына көрүнөт — досуңузга айткандай жазыңыз.
+    </p>
+    <svg class="orn orn--div" viewBox="0 0 300 60"><use href="#orn-div"/></svg>
+
+    <form class="rvForm" id="rvForm">
+      <div class="rvForm__row">
+        <label class="rvForm__field">
+          <span data-ru="Имя (необязательно)" data-en="Name (optional)">Атыңыз (милдеттүү эмес)</span>
+          <input type="text" id="rvName" maxlength="60" autocomplete="name">
+        </label>
+        <label class="rvForm__field">
+          <span data-ru="Место" data-en="Place">Жер</span>
+          <select id="rvPlace"></select>
+        </label>
+      </div>
+
+      <label class="rvForm__field rvForm__field--website" aria-hidden="true">
+        <span>Website</span>
+        <input type="text" id="rvWebsite" tabindex="-1" autocomplete="off">
+      </label>
+
+      <label class="rvForm__field">
+        <span data-ru="Ваш отзыв" data-en="Your review">Пикириңиз</span>
+        <textarea id="rvText" rows="4" maxlength="500"
+          data-ph-kg="Эмне жакты? Эмнеге көңүл буруу керек?"
+          data-ph-ru="Что понравилось? На что обратить внимание?"
+          data-ph-en="What did you enjoy? What should others know?"></textarea>
+        <span class="rvForm__count" id="rvCount">0 / 500</span>
+      </label>
+
+      <div class="rvForm__row rvForm__row--photo">
+        <label class="tbtn rvForm__photoBtn">
+          <span data-ru="Добавить фото" data-en="Add a photo">Сүрөт кошуу</span>
+          <input type="file" id="rvPhoto" accept="image/*" hidden>
+        </label>
+        <span class="rvForm__photoName" id="rvPhotoName"></span>
+        <button type="button" class="rvForm__photoClear" id="rvPhotoClear" hidden>✕</button>
+      </div>
+      <img class="rvForm__preview" id="rvPreview" hidden alt="">
+
+      <div class="rvForm__submit">
+        <button class="tbtn tbtn--go" id="rvSubmit" type="submit" data-ru="Опубликовать" data-en="Post it">Жарыялоо</button>
+        <span class="rvForm__status" id="rvStatus"></span>
+      </div>
+    </form>
+
+    <div class="rvList" id="rvList"></div>
+    <p class="rvEmpty" id="rvEmpty" hidden
+       data-ru="Пока отзывов нет — станьте первым." data-en="No reviews yet — be the first.">Азырынча пикир жок — биринчи болуңуз.</p>
+    <button class="rvAdmin" id="rvAdminBtn" type="button" title="admin">🔒</button>
+  </div>
+</section>
+
 
 <footer class="tfoot">
   <div class="wrap">

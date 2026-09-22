@@ -229,3 +229,84 @@
   color:#fff;font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
 }
 .place__facts b span{font-size:.75em;opacity:.75;font-family:var(--ff-b);font-weight:500}
+
+/* ============================================================
+   ОТЗЫВЫ ГОСТЕЙ
+   ============================================================ */
+.tsec--reviews{background:var(--paper)}
+.tsec--reviews .wrap{position:relative}
+
+.rvForm{
+  background:var(--white);border:1px solid var(--line);border-radius:14px;
+  padding:clamp(1.1rem,3vw,2rem);box-shadow:0 24px 60px rgba(27,19,16,.1);
+  display:flex;flex-direction:column;gap:1rem;margin-bottom:clamp(2.2rem,5vw,3.5rem);
+}
+.rvForm__row{display:flex;gap:1rem;flex-wrap:wrap}
+.rvForm__row--photo{align-items:center;gap:.8rem}
+.rvForm__field{flex:1 1 200px;display:flex;flex-direction:column;gap:.4rem;position:relative}
+.rvForm__field > span:first-child{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600}
+.rvForm__field input[type="text"],
+.rvForm__field select,
+.rvForm__field textarea{
+  font:inherit;font-size:.98rem;color:var(--ink);
+  padding:.7rem .9rem;border:1px solid var(--line);border-radius:10px;background:var(--paper);
+  width:100%;
+}
+.rvForm__field textarea{resize:vertical;min-height:110px}
+.rvForm__field input:focus-visible,
+.rvForm__field select:focus-visible,
+.rvForm__field textarea:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.rvForm__count{align-self:flex-end;font-size:.68rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.rvForm__field--website{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.rvForm__photoBtn{cursor:pointer}
+.rvForm__photoName{font-size:.82rem;color:var(--ink-3);word-break:break-all}
+.rvForm__photoClear{
+  width:24px;height:24px;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  color:var(--ink-3);font-size:.75rem;line-height:1;flex:none;
+}
+.rvForm__photoClear:hover{border-color:var(--no);color:var(--no)}
+.rvForm__preview{max-width:220px;max-height:220px;border-radius:10px;border:1px solid var(--line);object-fit:cover}
+
+.rvForm__submit{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.rvForm__status{font-size:.85rem;color:var(--ink-3)}
+.rvForm__status.is-ok{color:var(--ok)}
+.rvForm__status.is-bad{color:var(--no)}
+
+.rvList{display:flex;flex-direction:column;gap:1rem}
+.rv{
+  position:relative;background:var(--white);border:1px solid var(--line);border-radius:12px;
+  padding:1.2rem 1.3rem;box-shadow:0 10px 26px rgba(27,19,16,.06);
+  display:flex;gap:1rem;
+}
+.rv.is-hidden{opacity:.55;border-style:dashed}
+.rv__photo{flex:none;width:88px;height:88px;border-radius:10px;object-fit:cover;border:1px solid var(--line)}
+.rv__body{flex:1;min-width:0}
+.rv__head{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;margin-bottom:.35rem}
+.rv__name{font-family:var(--ff-d);font-size:1.08rem;color:var(--ink)}
+.rv__place{font-size:.72rem;color:var(--terra);font-weight:600;letter-spacing:.03em}
+.rv__date{margin-left:auto;font-size:.68rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.rv__text{font-size:.94rem;color:var(--ink-2);margin:0;white-space:pre-wrap;overflow-wrap:break-word}
+.rv__hideBtn{
+  margin-top:.6rem;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+  color:var(--no);border:1px solid var(--no);background:none;border-radius:999px;padding:.25rem .7rem;
+}
+.rv__hideBtn:hover{background:var(--no);color:#fff}
+.rv__hideBtn.is-restore{color:var(--ok);border-color:var(--ok)}
+.rv__hideBtn.is-restore:hover{background:var(--ok);color:#fff}
+
+.rvEmpty{text-align:center;color:var(--ink-3);font-size:.9rem}
+
+.rvAdmin{
+  position:absolute;top:0;right:0;width:30px;height:30px;border-radius:50%;
+  border:1px solid transparent;background:none;color:var(--ink-3);opacity:.35;font-size:.9rem;transition:.25s;
+}
+.rvAdmin:hover{opacity:1;border-color:var(--line)}
+.rvAdmin.is-on{opacity:1;border-color:var(--ok);color:var(--ok)}
+
+@media (max-width:640px){
+  .rv{flex-direction:column}
+  .rv__photo{width:100%;height:160px}
+  .rv__date{margin-left:0}
+}
