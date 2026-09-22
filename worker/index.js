@@ -78,7 +78,10 @@ async function ipHash(request) {
 
 function isAdmin(request, env) {
   const key = request.headers.get('x-admin-key');
-  return !!(env.ADMIN_KEY && key && key === env.ADMIN_KEY);
+  // допускаем оба имени секрета в панели Cloudflare — ADMIN_KEY (как в инструкции)
+  // и MY_ADMINS (так его назвали при первой настройке), чтобы не переделывать.
+  const wanted = env.ADMIN_KEY || env.MY_ADMINS;
+  return !!(wanted && key && key === wanted);
 }
 
 async function listReviews(request, env) {
