@@ -351,7 +351,46 @@
     });
   }
 
+  /* ============================================================
+     ЛОКАЦИИ: фото и видео подставляются, если файл лежит в папке
+     ============================================================ */
+  function loadPlaces() {
+    $$('.place').forEach(card => {
+      const media = $('.place__media', card);
+      const name  = ($('.place__name', card) || {}).textContent || '';
+      const imgSrc = card.dataset.img;
+      const vidSrc = card.dataset.video;
+      if (!media) return;
+
+      if (imgSrc) {
+        const probe = new Image();
+        probe.onload = () => {
+          if ($('video', media)) return;           // видео уже победило
+          const el = document.createElement('img');
+          el.src = imgSrc; el.alt = name; el.loading = 'lazy';
+          media.appendChild(el);
+        };
+        probe.src = imgSrc;
+      }
+
+      if (vidSrc) {
+        const v = document.createElement('video');
+        v.muted = true; v.loop = true; v.playsInline = true;
+        v.setAttribute('playsinline', ''); v.preload = 'metadata';
+        v.addEventListener('loadeddata', () => {
+          const img = $('img', media);
+          if (img) img.remove();
+          media.appendChild(v);
+          const play = () => v.play().catch(() => {});
+          play();
+        }, { once: true });
+        v.src = vidSrc;
+      }
+    });
+  }
+
   /* ---------- старт ---------- */
   updateCount();
   applyLang();
+  loadPlaces();
 })();
